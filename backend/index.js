@@ -24,10 +24,14 @@ mongoose
 
 const hotelRoutes = require("./routes/hotel");
 app.use("/hotel", hotelRoutes);
+
 const userRoutes = require("./routes/user");
 app.use("/user", userRoutes);
+
 const roomRoutes = require("./routes/room");
 app.use("/hotel/room", roomRoutes);
 
-app.listen(4000, () => console.log("connected to port 4000"));
+const reservationRoutes = require("./routes/reservation");
+app.use("/hotel/reserve", reservationRoutes);
 
+app.listen(4000, () => console.log("connected to port 4000"));

@@ -4,28 +4,17 @@ const bcrypt = require("bcryptjs");
 const validator = require("validator");
 
 let hotelSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+  name: { type: String, required: true, unique: true },
   email: {
     type: String,
     required: true,
     validate: [validator.isEmail, "failed must be a valid email address"],
   },
-  password: {
-    type: String,
-    required: true,
-  },
+  password: { type: String, required: true },
+  phone: { type: Number, required: true },
   rooms: [
     {
-      name: {
-        type: String,
-        required: true,
-        trim: true, // Removes extra spaces
-      },
-      type: {
+      roomType: {
         type: String,
         enum: ["Single", "Double", "Suite"], // Allowed room types
         required: true,
@@ -39,26 +28,14 @@ let hotelSchema = mongoose.Schema({
         type: Number,
         default: 0,
       },
-      location: {
-        building: {
-          type: String,
-          required: true,
-        },
-        floor: {
-          type: Number,
-          required: true,
-        },
-      },
       class: {
         type: String,
         enum: ["Economy", "Standard", "Luxury", "Premium"], // Allowed room classes
         required: true,
         default: "Standard", // Default to 'Standard'
       },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
+      description: { type: String, required: true },
+      createdAt: { type: Date, default: Date.now },
       imagesurl: [],
     },
   ],

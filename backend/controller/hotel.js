@@ -1,18 +1,15 @@
-const bcryptjs = require("bcryptjs");
-var simplecrypt = require("simplecrypt");
-var sc = simplecrypt();
-
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 const hotelModel = require("../model/hotel");
 
 const getHotels = async (req, res) => {
   // let token = req.headers.authorization;
+  const hotels = await hotelModel.find();
   try {
-    const hotels = await hotelModel.find();
     res.json(hotels);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -21,7 +18,6 @@ const getHotels = async (req, res) => {
 
 const getHotelById = async (req, res) => {
   const { hotelId } = req.params;
-  //In req.body: {"mail":"john.doe@example.com"}
   try {
     const hotel = await hotelModel.findOne({ _id: hotelId });
     res.json(hotel);
