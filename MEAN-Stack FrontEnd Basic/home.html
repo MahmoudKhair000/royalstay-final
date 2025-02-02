@@ -44,26 +44,93 @@
               >
               </i>
               <i
-                class="bi bi-list dropdown-toggle md-hide sm-show"
+                class="bi bi-list navbar-toggler md-hide sm-show"
+                class=""
                 type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"
+                aria-label="Toggle navigation"
               >
               </i>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Log In</a></li>
+                <li><a class="dropdown-item" href="#">Sign Up</a></li>
                 <li><hr class="dropdown-divider md-hide" /></li>
-                <li><a class="dropdown-item md-hide" href="#">Home</a></li>
-                <li><a class="dropdown-item md-hide" href="#">Services</a></li>
-                <li><a class="dropdown-item md-hide" href="#">Hotels</a></li>
-                <li>
-                  <a class="dropdown-item md-hide" href="#">Reservation</a>
-                </li>
-                <li><a class="dropdown-item md-hide" href="#">Partners</a></li>
-                <li><a class="dropdown-item md-hide" href="#">Contact</a></li>
               </ul>
+              <div
+                class="sidebar offcanvas offcanvas-start shadow-none"
+                tabindex="-1"
+                id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel"
+              >
+                <!-- Sidebar header -->
+                <div class="offcanvas-header text-white border-bottom">
+                  <img
+                    class="logo"
+                    src="./assets/logos/logo.svg"
+                    alt="Company Logo"
+                  />
+                  <button
+                    type="button"
+                    class="btn-close btn-close-black shadow-none"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div
+                  class="offcanvas-body d-flex flex-column flex-lg-row p-3 p-lg-0"
+                >
+                  <ul
+                    class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
+                  >
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Home</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Services</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Hotels</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Reservation</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Partners</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a
+                        class="nav-link active"
+                        aria-current="page"
+                        href="About-us.html"
+                        >About Us</a
+                      >
+                    </li>
+                    <hr />
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Log In</a
+                      >
+                    </li>
+                    <li class="nav-item mx-2">
+                      <a class="nav-link active" aria-current="page" href="#"
+                        >Sign Up</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -148,7 +215,7 @@
             </div>
             <div class="col-10 col-lg-4 col-md-10 col-sm-12">
               <h3>Relative Links: -</h3>
-              <br/>
+              <br />
               <div class="row pt-4">
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">Hotels</a></p>
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">Services</a></p>
@@ -158,7 +225,9 @@
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">Partners</a></p>
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">About</a></p>
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">Contact</a></p>
-                <p class="col-6 col-lg-6 col-sm-4"><a href="">Why Egypt...?</a></p>
+                <p class="col-6 col-lg-6 col-sm-4">
+                  <a href="">Why Egypt...?</a>
+                </p>
                 <p class="col-6 col-lg-6 col-sm-4"><a href="">Help</a></p>
               </div>
             </div>
