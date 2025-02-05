@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const hotelModel = require("../model/hotel");
 
+// hotel rooms functions
 const getHotels = async (req, res) => {
   // let token = req.headers.authorization;
   const hotels = await hotelModel.find();
@@ -15,27 +16,24 @@ const getHotels = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
 const getHotelById = async (req, res) => {
   const { hotelId } = req.params;
+  const hotel = await hotelModel.findOne({ _id: hotelId });
   try {
-    const hotel = await hotelModel.findOne({ _id: hotelId });
     res.json(hotel);
   } catch (err) {
     res.status(404).send(err.message);
   }
 };
-
 const createHotel = async (req, res) => {
   let newhotel = req.body;
+  let savehotel = await hotelModel.create(newhotel);
   try {
-    let savehotel = await hotelModel.create(newhotel);
     res.json({ message: "done new hotel", date: savehotel });
   } catch (err) {
     res.status(400).json(err);
   }
 };
-
 const loginHotel = async (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
@@ -50,14 +48,17 @@ const loginHotel = async (req, res) => {
   } else {
     try {
       const isvalid = await bcryptjs.compare(password, hotel.password);
-      console.log("password match: " + isvalid);
       if (isvalid) {
-        let token = jwt.sign(
+        var token = jwt.sign(
           { id: hotel._id, email: hotel.email },
           process.env.SECRET
         );
+        localStorage.setItem("token", token);
+        console.log("password match: " + isvalid);
+        console.log(token);
         res.status(200).json({ message: "Successful login", token: token });
       } else {
+        console.log("password match: " + isvalid);
         res.status(401).json({ message: "invalid password" });
       }
     } catch (err) {
@@ -65,7 +66,6 @@ const loginHotel = async (req, res) => {
     }
   }
 };
-
 const deleteHotel = async (req, res) => {
   // params is taken from link : http://localhost:4000/hotel/?id=675181c6dec21b197effd608
   const { hotelId } = req.params;
@@ -76,15 +76,14 @@ const deleteHotel = async (req, res) => {
     res.status(404).send(err.message);
   }
 };
-
 const updateHotel = async (req, res) => {
   // params is taken from link : http://localhost:4000/hotel/?id=675181c6dec21b197effd608
-  const hotelId = req.params;
+  const { hotelId } = req.params;
   const update = req.body;
   try {
     await hotelModel.findByIdAndUpdate(hotelId, update, {
       new: true, // Return the room after it's updated
-      runValidators: true, // Validate the data during the update  
+      runValidators: true, // Validate the data during the update
     });
     res.send("Hotel Updated Successfully!!");
   } catch (err) {
@@ -92,11 +91,121 @@ const updateHotel = async (req, res) => {
   }
 };
 
+// hotel rooms functions
+const getHotelRooms = async (req, res) => {
+  try {
+    const { hotelId } = req.params;
+    const hotel = await hotelModel.findOne({ _id: hotelId });
+    const hotelRooms = await hotel.rooms;
+    res.json(hotelRooms);
+  } catch (err) {
+    res.status(404).send(err.message);
+  }
+};
+const addHotelRoom = async (req, res) => {
+  try {
+    const { hotelId } = await req.params;
+    const hotel = await hotelModel.findOne({ _id: hotelId });
+    let hotelRooms = hotel.rooms; // Array
+    await hotelRooms.push(req.body); //pushing
+    const update = { rooms: hotelRooms };
+    await hotelModel.findByIdAndUpdate(hotelId, update, {
+      new: true,
+      runValidators: true,
+    });
+    res.send(hotelRooms);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+const deleteHotelRoom = async (req, res) => {
+  const { hotelId } = await req.params;
+  const hotel = await hotelModel.findOne({ _id: hotelId });
+  let hotelRooms = hotel.rooms; // Array
+
+  const { roomType } = await req.params;
+  const updated = hotelRooms.filter(
+    (x) => x.roomType != roomType && x.roomType != null
+  );
+  const update = { rooms: updated };
+  try {
+    // update with a new array
+    await hotelModel.findByIdAndUpdate(hotelId, update, {
+      runValidators: true,
+    });
+    const hotelAfter = await hotelModel.findOne({ _id: hotelId });
+    res.send({
+      message: "deleted successfully !!!",
+      params: req.params,
+      hotelAfter: hotelAfter,
+    });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+const deleteHotelRoomById = async (req, res) => {
+  const { hotelId } = await req.params;
+  const hotel = await hotelModel.findOne({ _id: hotelId });
+  let hotelRooms = hotel.rooms; // Array
+
+  const { roomId } = await req.params;
+  const updated = hotelRooms.filter((x) => x._id != roomId && x._id != null);
+  const update = { rooms: updated };
+  try {
+    // update with a new array
+    await hotelModel.findByIdAndUpdate(hotelId, update, {
+      runValidators: true,
+    });
+    const hotelAfter = await hotelModel.findOne({ _id: hotelId });
+    const roomsAfter = await hotelAfter.rooms;
+    res.send({
+      params: req.params,
+      message: "deleted successfully !!!",
+      // roosFiltered: updated,
+      roomsAfter: roomsAfter,
+      hotelAfter: hotelAfter,
+    });
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+// unfinished
+const updateHotelRoom = async (req, res) => {
+  const { hotelId } = await req.params;
+  const { roomId } = await req.params;
+  const hotel = await hotelModel.findOne({ _id: hotelId }); // document
+  let hotelRooms = hotel.rooms; // Array
+  const target = hotelRooms.find((x) => x._id == roomId);
+  const update = req.body;
+  for (let x in target) {
+    if (update[x] != null) {
+      target[x] = update[x];
+    }
+  }
+  try {
+    await hotelModel.findByIdAndUpdate(
+      hotelId,
+      { rooms: hotelRooms },
+      { new: true, runValidators: true }
+    );
+    res.json({ rooms: hotelRooms });
+  } catch (err) {
+    res.status(406).send(err.message);
+  }
+};
+
 module.exports = {
+  // Hotel Functions
   getHotels,
   createHotel,
   getHotelById,
   loginHotel,
   deleteHotel,
   updateHotel,
+  // Room Functions
+  getHotelRooms,
+  addHotelRoom,
+  deleteHotelRoom,
+  deleteHotelRoomById,
+  updateHotelRoom,
 };

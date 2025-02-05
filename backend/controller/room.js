@@ -1,12 +1,14 @@
 const { validationResult } = require("express-validator");
-const Room = require("../model/room");
 const textstatus = require("../utils/statustext");
 const appError = require("../utils/error");
 const asyncWrapper = require("../middleware/asyncwrapper");
 
+const hotel = require("../model/hotel");
+const hotelRooms = hotel.rooms;
+
 // Function to check if a room exists in the database
 const ensureRoomExists = async (roomId) => {
-  const room = await Room.findById(roomId);
+  const room = await hotelRooms.findById(roomId);
   // If the room is not found, throw a 404 error
   if (!room) {
     const error = appError.create("Room not found", 404, textstatus.FAIL);
@@ -23,7 +25,8 @@ let getAllRooms = asyncWrapper(async (req, res) => {
   const skip = (page - 1) * limit; // Calculate the number of items to skip
 
   // Fetch rooms from the database, excluding the `__v` field
-  const rooms = await Room.find({}, { __v: false })
+  const rooms = await hotelRooms
+    .find({}, { __v: false })
     .limit(limit) // Set the limit for the results
     .skip(skip); // Skip a specified number of results
 
@@ -51,7 +54,7 @@ let addRoom = asyncWrapper(async (req, res, next) => {
   }
 
   // Create a new room using the data from the request
-  const newRoom = new Room(req.body);
+  const newRoom = new hotelRooms(req.body);
   await newRoom.save(); // Save the room to the database
 
   // Send a response containing the newly created room
@@ -66,7 +69,7 @@ let updateRoom = asyncWrapper(async (req, res, next) => {
   await ensureRoomExists(roomId);
 
   // Update the room and return the updated data
-  const updatedRoom = await Room.findByIdAndUpdate(roomId, req.body, {
+  const updatedRoom = await hotelRooms.findByIdAndUpdate(roomId, req.body, {
     new: true, // Return the room after it's updated
     runValidators: true, // Validate the data during the update
   });
@@ -85,7 +88,7 @@ let deleteRoom = asyncWrapper(async (req, res) => {
   await ensureRoomExists(roomId);
 
   // Delete the room from the database
-  const result = await Room.deleteOne({ _id: roomId });
+  const result = await hotelRooms.deleteOne({ _id: roomId });
 
   // Send a response indicating success and the number of deleted items
   res.status(200).json({

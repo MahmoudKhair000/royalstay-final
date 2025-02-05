@@ -247,30 +247,32 @@ body {
 
 .test-sec {
   padding-top: 120px;
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .test {
   height: 200px;
-  width: 300px;
+  /* width: 300px; */
   /* margin: 0 auto; */
   font-family: var(--font-main);
   font-style: oblique;
-  color: var(--txt-one);
-  background-color: var(--bg-one);
+  color: var(--bg-one);
+  background-color: var(--bg-two);
   border: var(--border-one);
-  border-radius: var(--radius-two);
+  border-radius:30px;
   /* Layout-test */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* flex-wrap: wrap;align-content: center; */
   /* align-content Needs flex-wrap */
+}
+
+.test > i {
+  font-size: 60px;
 }
 
 /* Start Footer */

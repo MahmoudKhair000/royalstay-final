@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const bcrypt = require("bcryptjs");
 
 app.use(express.json());
 app.use(
@@ -22,16 +23,20 @@ mongoose
     console.log(err);
   });
 
-const hotelRoutes = require("./routes/hotel");
-app.use("/hotel", hotelRoutes);
-
 const userRoutes = require("./routes/user");
 app.use("/user", userRoutes);
 
+const hotelRoutes = require("./routes/hotel");
+app.use("/hotel", hotelRoutes);
+
 const roomRoutes = require("./routes/room");
-app.use("/hotel/room", roomRoutes);
+app.use("/room", roomRoutes);
 
 const reservationRoutes = require("./routes/reservation");
-app.use("/hotel/reserve", reservationRoutes);
+app.use("/reserve", reservationRoutes);
+
+// app.get("/reserve/:hotelId/:roomType/:userId", function (req, res) {
+//   res.json({"Request params":req.params})
+// });
 
 app.listen(4000, () => console.log("connected to port 4000"));
