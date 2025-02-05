@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
 export class NavbarComponent {
 
 }

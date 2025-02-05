@@ -71,9 +71,7 @@ body {
   width: 100%;
   height: 80px;
   background-color: var(--bg-one);
-  justify-content: space-between;
   z-index: 2;
-  overflow: visible;
   border-bottom: var(--border-one);
 }
 
@@ -81,7 +79,9 @@ body {
   width: 100%;
   position: relative;
 }
-
+.nav-bar>.cont-fluid>.row{
+  justify-content: space-between;
+}
 .nav-bar .logo-sec {
   display: flex;
   height: 80px;
@@ -98,6 +98,7 @@ body {
 }
 
 .nav-bar .menu-sec {
+  justify-self: flex-end;
   display: flex;
   padding: 0 !important;
   justify-content: flex-end;
@@ -114,7 +115,8 @@ body {
   justify-self: start;
   align-self: center;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-content: center;
   list-style: none;
 }
@@ -122,12 +124,14 @@ body {
 .nav-bar .menu-sec .menu ul li {
   text-align: center;
   font-size: large;
+  margin: 1px;
 }
 
 .nav-bar .nav-item .nav-link,
 .nav-bar .menu-sec .menu ul li a {
   padding: 5px;
   border-radius: 5px;
+  box-sizing: border-box;
   /* border: var(--border-one); */
 }
 .nav-bar .nav-item {
@@ -156,7 +160,7 @@ body {
   border-radius: 1.5px;
 }
 .offcanvas-header img {
-  max-width: 90%;
+  max-width: 95%;
 }
 .nav-bar .menu-sec .user {
   width: 80px;
@@ -208,6 +212,7 @@ body {
   }
 }
 /*End menu hiding */
+
 .nav-bar .menu-sec .user .menu-drop {
   position: fixed;
   top: 80px;
@@ -219,11 +224,9 @@ body {
   border-radius: var(--radius-one);
   background-color: var(--bg-one);
 }
-
 .nav-bar .menu-sec .dropdown-toggle::after {
   display: none !important;
 }
-
 .nav-bar .menu-sec .dropdown-menu {
   border: var(--border-one);
   inset: 6px 0px auto auto !important;
@@ -235,14 +238,14 @@ body {
   padding: 7.5px 25px;
   font-family: var(--font-royal);
   font-size: larger;
+  color: var(--navy) !important;
 }
-
 /* End Navbar */
 
 /* Scroll test */
 .main {
   width: 100%;
-  height: 2000px;
+  height: 1000px;
 }
 
 .test-sec {
@@ -290,7 +293,6 @@ body {
 .footer-main > .cont-fluid {
   padding: 0 20px;
 }
-
 .footer-main .row .col-10 {
   margin: 30px auto;
   padding: 10px;
@@ -309,7 +311,7 @@ body {
   position: relative;
   text-align: right;
   overflow: hidden;
-  border: 3px solid var(--navy);
+  border: 2.5px solid var(--navy);
   border-radius: 15px;
   width: 100%;
   height: 300px;
@@ -323,14 +325,12 @@ body {
 .gmap_iframe {
   height: 300px !important;
 }
-
 .weather-pane {
-  border: 3px solid var(--navy);
+  border: 2.5px solid var(--navy);
   border-radius: 15px;
   overflow: hidden;
   width: 100%;
 }
-
 .foot-note {
   width: 100%;
   margin: 0 auto;
