@@ -1,4 +1,4 @@
-const route = require("express").Router();
+const router = require("express").Router();
 const bcrypt = require("bcryptjs")
 const auth = require("../middleware/auth");
 
@@ -12,14 +12,14 @@ const {
 } = require("../controller/hotel");
 
 //http://localhost:4000/hotel
-route.get("/", getHotels);
-route.get("/:hotelId", getHotelById);
-route.post("/register", createHotel);
-route.post("/login", loginHotel);
-route.put("/update/:hotelId", updateHotel);
-route.delete("/delete/:hotelId", deleteHotel);
+router.get("/", getHotels);
+router.get("/:hotelId", getHotelById);
+router.post("/register", createHotel);
+router.post("/login", loginHotel);
+router.put("/update/:hotelId", updateHotel);
+router.delete("/delete/:hotelId", deleteHotel);
 
-route.patch("/test", async (req, res) => {
+router.patch("/test", async (req, res) => {
   try {
     const comTest = await bcrypt.compare(
       "01551533884",
@@ -31,4 +31,4 @@ route.patch("/test", async (req, res) => {
   }
 });
 
-module.exports = route;
+module.exports = router;

@@ -36,7 +36,7 @@ const hotelSchema = mongoose.Schema({
     validate: [validator.isEmail, "invalid email"],
   },
   password: { type: String, required: true },
-  phone: { type: Number, required: true },
+  phone: { type: String, required: true },
   rooms: [roomSchema],
 });
 
@@ -47,5 +47,4 @@ hotelSchema.pre("save", async function (next) {
   next();
 });
 
-hotelModel = mongoose.model("hotel", hotelSchema);
-module.exports = hotelModel;
+module.exports = mongoose.model("hotel", hotelSchema);

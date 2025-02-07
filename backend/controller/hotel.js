@@ -136,8 +136,9 @@ const deleteHotelRoom = async (req, res) => {
     const hotelAfter = await hotelModel.findOne({ _id: hotelId });
     res.send({
       message: "deleted successfully !!!",
-      params: req.params,
-      hotelAfter: hotelAfter,
+      // params: req.params,
+      // hotelAfter: hotelAfter,
+      roomsAfter: hotelAfter.rooms,
     });
   } catch (err) {
     res.status(400).send(err.message);
@@ -161,15 +162,14 @@ const deleteHotelRoomById = async (req, res) => {
     res.send({
       params: req.params,
       message: "deleted successfully !!!",
-      // roosFiltered: updated,
+      // roomsFiltered: updated,
       roomsAfter: roomsAfter,
-      hotelAfter: hotelAfter,
+      // hotelAfter: hotelAfter,
     });
   } catch (err) {
     res.status(400).send(err.message);
   }
 };
-// unfinished
 const updateHotelRoom = async (req, res) => {
   const { hotelId } = await req.params;
   const { roomId } = await req.params;
@@ -188,7 +188,7 @@ const updateHotelRoom = async (req, res) => {
       { rooms: hotelRooms },
       { new: true, runValidators: true }
     );
-    res.json({ rooms: hotelRooms });
+    res.json({ room: hotelRooms.find((x) => x._id == roomId), roomsAfter: hotelRooms });
   } catch (err) {
     res.status(406).send(err.message);
   }

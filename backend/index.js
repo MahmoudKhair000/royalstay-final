@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "*",
-    methods: ["POST", "GET", "PUT"],
+    methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
   })
 );
 dotenv.config();
@@ -24,19 +24,13 @@ mongoose
   });
 
 const userRoutes = require("./routes/user");
-app.use("/user", userRoutes);
-
 const hotelRoutes = require("./routes/hotel");
-app.use("/hotel", hotelRoutes);
-
 const roomRoutes = require("./routes/room");
-app.use("/room", roomRoutes);
-
 const reservationRoutes = require("./routes/reservation");
-app.use("/reserve", reservationRoutes);
 
-// app.get("/reserve/:hotelId/:roomType/:userId", function (req, res) {
-//   res.json({"Request params":req.params})
-// });
+app.use("/user", userRoutes);
+app.use("/hotel", hotelRoutes);
+app.use("/room", roomRoutes);
+app.use("/reserve", reservationRoutes);
 
 app.listen(4000, () => console.log("connected to port 4000"));

@@ -1,4 +1,4 @@
-const route = require("express").Router();
+const router = require("express").Router();
 // const auth = require("../middleware/auth");
 const {
   getReservations,
@@ -8,10 +8,11 @@ const {
   cancel,
 } = require("../controller/reservation");
 
-route.get("/", getReservations);
-route.post("/:id", getReservation);
-route.post("/reserve", reserve);
-route.put("/change/:id", change);
-route.delete("/:id", cancel);
+// http://localhost:4000/reserve
+router.get("/", getReservations);
+router.post("/:resId", getReservation);
+router.post("/:userId/:hotelId/:roomType", reserve);
+router.put("/:userId/:hotelId/:roomType", change);
+router.delete("/:userId/:resId", cancel);
 
-module.exports = route;
+module.exports = router;

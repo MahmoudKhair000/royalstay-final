@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const express = require("express");
-const route = express.Router();
+const router = express.Router();
 
 const {
   getHotelRooms,
@@ -11,10 +11,10 @@ const {
 } = require("../controller/hotel");
 
 //http://localhost:4000/room
-route.post("/:hotelId", getHotelRooms);
-route.post("/:hotelId/add/", addHotelRoom);
-route.delete("/:hotelId/delete/type/:roomType", deleteHotelRoom);
-route.delete("/:hotelId/delete/id/:roomId", deleteHotelRoomById);
-route.put("/:hotelId/update/:roomId", updateHotelRoom);
+router.post("/:hotelId", getHotelRooms);
+router.post("/:hotelId/add/", addHotelRoom);
+router.delete("/:hotelId/delete/type/:roomType", deleteHotelRoom);
+router.delete("/:hotelId/delete/id/:roomId", deleteHotelRoomById);
+router.put("/:hotelId/update/:roomId", updateHotelRoom);
 
-module.exports = route;
+module.exports = router;

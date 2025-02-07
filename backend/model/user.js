@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     validate: [validator.isEmail, "failed must be a valid email address"],
   },
   password: { type: String, required: true },
-  phone: { type: Number, required: true },
+  phone: { type: String, required: true },
   gender: { type: String, enum: ["Male", "Female"], required: true },
   age: { type: Number, required: true },
 });

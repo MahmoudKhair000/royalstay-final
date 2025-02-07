@@ -22,5 +22,10 @@ export const routes: Routes = [
         title: "Locations",
         path: "locations",
         component: LocationsComponent,
-    }
+    },
+    {
+        title: "Locations",
+        path: "user-sign",
+        component: LocationsComponent,
+    },
 ];
