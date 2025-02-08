@@ -28,7 +28,6 @@ export class ResQueryComponent {
           } else {
             this.reservations = result;
           }
-          this.reservations = [result];
           console.log(this.reservations)
         } catch (err: any) {
           alert(err.message);
