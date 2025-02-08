@@ -3,6 +3,7 @@ const router = require("express").Router();
 const {
   getReservations,
   getReservation,
+  getUserReservation,
   reserve,
   change,
   cancel,
@@ -10,7 +11,8 @@ const {
 
 // http://localhost:4000/reserve
 router.get("/", getReservations);
-router.post("/:resId", getReservation);
+router.get("/id/:resId", getReservation);
+router.get("/user/:userId", getUserReservation);
 router.post("/:userId/:hotelId/:roomType", reserve);
 router.put("/:userId/:hotelId/:roomType", change);
 router.delete("/:userId/:resId", cancel);

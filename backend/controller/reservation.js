@@ -31,6 +31,17 @@ const getReservation = async (req, res) => {
   }
 };
 
+// get reservation for user
+const getUserReservation = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const reservation = await reserveModel.findOne({ user: userId });
+    res.send(reservation);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
 // make reservation
 const reserve = async (req, res) => {
   const { userId, hotelId, roomType } = req.params;
@@ -62,7 +73,7 @@ const reserve = async (req, res) => {
       total: resDays.length * room.price,
     };
     await reserveModel.create(reservation);
-    res.json({ message: "Done reservation!!", data: reservation });
+    res.send({ message: "Done reservation!!", data: reservation });
   } catch (err) {
     res.status(404).send(err.message);
   }
@@ -73,6 +84,7 @@ const change = async (req, res) => {
   let { userId, hotelId, roomType } = req.params;
   const user = await userModel.findOne({ _id: userId });
   const hotel = await hotelModel.findOne({ _id: hotelId });
+  
   if (req.body.roomType != null) {
     roomType = req.body.roomType;
   }
@@ -121,7 +133,7 @@ const cancel = async (req, res) => {
   let { userId, resId } = req.params;
   try {
     await reserveModel.deleteOne({ user: userId, _id: resId });
-    res.send({ message: "reservation Deleted !!" });
+    res.send({ message: "reservation:" + resId + " Deleted !!" });
   } catch (err) {
     res.status(404).send(err.message);
   }
@@ -130,6 +142,7 @@ const cancel = async (req, res) => {
 module.exports = {
   getReservations,
   getReservation,
+  getUserReservation,
   reserve,
   change,
   cancel,
