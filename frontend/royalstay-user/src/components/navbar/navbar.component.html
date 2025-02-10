@@ -7,14 +7,14 @@
           <img
             class="logo align-self-center"
             src="assets/logos/logo.svg"
-            alt="should be the logo"
+            alt="RoyalStay: the logo"
           />
         </a>
       </div>
       <div class="menu-sec col col-lg-8 col-md-8 col-sm-4 d-flex">
         <div class="menu sm-hide d-flex w-100">
           <ul class="row">
-            <li class="col"><a routerLink="/home">Home</a></li>
+            <li class="col"><a routerLink="/">Home</a></li>
             <li class="col"><a routerLink="/services">Services</a></li>
             <li class="col"><a routerLink="/locations">Locations</a></li>
             <li class="col"><a routerLink="/hotels">Hotels</a></li>
@@ -45,6 +45,7 @@
                 class="logo"
                 src="./assets/logos/logo.svg"
                 alt="Company Logo"
+                routerLink="/"
               />
               <button
                 type="button"
@@ -60,27 +61,50 @@
                 class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
               >
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="/"
                     >Home</a
                   >
                 </li>
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="services"
                     >Services</a
                   >
                 </li>
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="locations"
+                    >Locations</a
+                  >
+                </li>
+                <li class="nav-item ms-4 mx-2">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="hotels"
                     >Hotels</a
                   >
                 </li>
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="res-query"
                     >Reservation</a
                   >
                 </li>
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="about"
                     >Partners</a
                   >
                 </li>
@@ -88,19 +112,17 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    href="About-us.html"
-                    >About Us</a
-                  >
+                    routerLink="about/contact"
+                    >About Us &hslash;
+                  </a>
                 </li>
                 <hr />
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    routerLink="user-sign"
                     >Log In</a
-                  >
-                </li>
-                <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Sign Up</a
                   >
                 </li>
               </ul>
@@ -111,5 +133,6 @@
     </div>
   </div>
 </div>
+<!-- Navbar Space Holder -->
 <div class="nav-holder"></div>
 <!-- End Navbar -->

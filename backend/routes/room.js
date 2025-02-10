@@ -11,7 +11,7 @@ const {
 } = require("../controller/hotel");
 
 //http://localhost:4000/room
-router.post("/:hotelId", getHotelRooms);
+router.get("/:hotelId", getHotelRooms);
 router.post("/:hotelId/add/", addHotelRoom);
 router.delete("/:hotelId/delete/type/:roomType", deleteHotelRoom);
 router.delete("/:hotelId/delete/id/:roomId", deleteHotelRoomById);

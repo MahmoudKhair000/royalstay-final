@@ -5,8 +5,7 @@ const validator = require("validator");
 
 const roomSchema = mongoose.Schema({
   roomType: {
-    type: String || null,
-    enum: ["Single", "Double", "Suite"], // Allowed room types - Make enum in Front-end options values
+    type: String || null, // Allowed room types - Make enum in Front-end options values
     default: "Single",
   },
   price: {
@@ -37,7 +36,10 @@ const hotelSchema = mongoose.Schema({
   },
   password: { type: String, required: true },
   phone: { type: String, required: true },
+  city: { type: String, required: true },
+  rating: { type: Number, default: "Not assigned" },
   rooms: [roomSchema],
+  imagesurl: [],
 });
 
 hotelSchema.pre("save", async function (next) {

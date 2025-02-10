@@ -25,20 +25,20 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
-    return res
-      .status(400)
-      .json({ message: "you must enter email and password" });
+    return res.status(400).json({ message: "Enter email and password !!" });
   }
+
   const user = await userModel.findOne({ email });
   if (!user) {
     return res.status(404).json({ message: "invalid Email or Password" });
   }
 
-  let isvalid = await bcrypt.compare(password, user.password);
-  if (isvalid) {
+  let isValid = await bcrypt.compare(password, user.password);
+  if (isValid) {
     let token = jwt.sign(
       { id: user._id, email: user.email },
-      process.env.secret
+      process.env.secret,
+      { expiresIn: "1 Day" }
     );
     res.status(200).json({ message: "successful login", token: token });
   } else {

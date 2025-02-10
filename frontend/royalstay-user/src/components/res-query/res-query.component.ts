@@ -12,28 +12,30 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './res-query.component.html',
   styleUrl: './res-query.component.css'
 })
-export class ResQueryComponent {
-  reservations: any = {}
 
+export class ResQueryComponent {
+  reservations: any = {};
   userId: any = `675074f54aa1968e289d6d6b`;
+  hotelId: any = `675074f54aa1968e289d6d6b`;
+  roomType: any = `Single`;
 
   reserve() {
     this.http
-      .get(`http://localhost:4000/reservation/user/${this.userId}`)
+      .get(`http://localhost:4000/reservation/user/${this.userId}`/*, { request-body-object } */)
       .subscribe((result) => {
         try {
-          console.log(typeof(result))
-          if ((typeof(result)).toString() != `Array`) {
+          // console.log(typeof (result))
+          if ((typeof (result)).toString() != `object`) {
             this.reservations = [result];
           } else {
             this.reservations = result;
           }
-          console.log(this.reservations)
+          // console.log(this.reservations)
         } catch (err: any) {
           alert(err.message);
         }
       })
-  }
+  };
 
-  constructor(private http: HttpClient) { this.reserve() }
+  constructor(private http: HttpClient) { this.reserve() };
 }

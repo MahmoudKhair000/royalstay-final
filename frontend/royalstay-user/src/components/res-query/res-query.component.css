@@ -1,0 +1,18 @@
+@import url("../../styles.css");
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1480px;
+}
+
+table {
+  background: linear-gradient(#0009 0%, #0008 60%, #0007 100%),
+    var(--pattern-two), #000000;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+td {
+  color: #f5f5f5;
+  background-color: #00000000;
+}

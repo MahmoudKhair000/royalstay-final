@@ -188,7 +188,10 @@ const updateHotelRoom = async (req, res) => {
       { rooms: hotelRooms },
       { new: true, runValidators: true }
     );
-    res.json({ room: hotelRooms.find((x) => x._id == roomId), roomsAfter: hotelRooms });
+    res.json({
+      room: hotelRooms.find((x) => x._id == roomId),
+      roomsAfter: hotelRooms,
+    });
   } catch (err) {
     res.status(406).send(err.message);
   }

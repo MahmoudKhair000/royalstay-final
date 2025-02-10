@@ -19,7 +19,6 @@ const getReservations = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
 // get reservation by Id
 const getReservation = async (req, res) => {
   const { resId } = req.params;
@@ -30,18 +29,16 @@ const getReservation = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
 // get reservation for user
 const getUserReservation = async (req, res) => {
   const { userId } = req.params;
   try {
-    const reservation = await reserveModel.findOne({ user: userId });
+    const reservation = await reserveModel.find({ user: userId });
     res.send(reservation);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
 };
-
 // make reservation
 const reserve = async (req, res) => {
   const { userId, hotelId, roomType } = req.params;
@@ -78,13 +75,12 @@ const reserve = async (req, res) => {
     res.status(404).send(err.message);
   }
 };
-
 // change reservation
 const change = async (req, res) => {
   let { userId, hotelId, roomType } = req.params;
   const user = await userModel.findOne({ _id: userId });
   const hotel = await hotelModel.findOne({ _id: hotelId });
-  
+
   if (req.body.roomType != null) {
     roomType = req.body.roomType;
   }
@@ -127,7 +123,6 @@ const change = async (req, res) => {
     res.status(404).send(err.message);
   }
 };
-
 // cancel reservation
 const cancel = async (req, res) => {
   let { userId, resId } = req.params;
@@ -138,7 +133,6 @@ const cancel = async (req, res) => {
     res.status(404).send(err.message);
   }
 };
-
 module.exports = {
   getReservations,
   getReservation,

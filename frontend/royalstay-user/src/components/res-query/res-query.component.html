@@ -1,17 +1,22 @@
 <div class="bg-art-one py-5">
   <div class="main container">
-    <p>query works !!</p>
-    <table class="table table-bordered m-0">
+    <h2 class="mb-4">Reservation Query !!</h2>
+    <table class="table table-bordered text-center radius m-0">
       <thead>
         <tr>
           <!-- <td>user</td> -->
-          <td>userName</td>
-          <td>userMail</td>
-          <td>userPhone</td>
+          <td>User Name</td>
+          <td>User Mail</td>
+          <td>User Phone</td>
           <!-- <td>hotel</td> -->
-          <td>hotelName</td>
-          <td>hotelMail</td>
-          <td>hotelPhone</td>
+          <td>Hotel Name</td>
+          <td>Hotel Mail</td>
+          <td>Hotel Phone</td>
+          <td>Room Type</td>
+          <td>Room Price</td>
+          <td>Reservation Days</td>
+          <td>total</td>
+          <td>Edit</td>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +30,11 @@
           <td>{{ item.hotelName }}</td>
           <td>{{ item.hotelMail }}</td>
           <td>{{ item.hotelPhone }}</td>
+          <td>{{ item.roomType }}</td>
+          <td>{{ item.roomPrice }}</td>
+          <td>{{ item.days.length }}</td>
+          <td>{{ item.total }}</td>
+          <td><button class="btn btn-primary p-1">Edit</button></td>
         </tr>
         }
       </tbody>

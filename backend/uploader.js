@@ -6,24 +6,25 @@ const { GridFsStorage } = require("multer-gridfs-storage");
 const Grid = require("gridfs-stream");
 
 // Connect to MongoDB
-// mongodb://localhost:27017/
-const mongoURL = "mongodb://localhost:27017/hotelapp";
-const conn = mongoose.createConnection(mongoURL, {
+const conn = mongoose.createConnection("mongodb://localhost:27017/hotelapp", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 // Init GridFS
 let gfs;
 conn.once("open", () => {
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection("uploads");
 });
+
 // Storage Engine for Multer
 const storage = new GridFsStorage({
   url: mongoURL,
   file: (req, file) => ({ filename: file.originalname, bucketName: "uploads" }),
 });
 const upload = multer({ storage });
+
 
 // **Upload File**
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -38,7 +39,6 @@ app.get("/files", async (req, res) => {
 app.get("/files/:filename", async (req, res) => {
   const file = await gfs.files.findOne({ filename: req.params.filename });
   if (!file) return res.status(404).send("File not found");
-
   const readStream = gfs.createReadStream(file.filename);
   readStream.pipe(res);
 });

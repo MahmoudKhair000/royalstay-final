@@ -8,16 +8,12 @@ import { ResFormComponent } from '../components/res-form/res-form.component';
 import { RoomsComponent } from '../components/rooms/rooms.component';
 import { RoomViewComponent } from '../components/room-view/room-view.component';
 import { AboutComponent } from '../components/about/about.component';
+import { UserSignComponent } from '../components/user-sign/user-sign.component';
 
 export const routes: Routes = [
     {
         title: "RoyalStay",
         path: "",
-        component: HomeComponent,
-    },
-    {
-        title: "RoyalStay",
-        path: "home",
         component: HomeComponent,
     },
     {
@@ -33,7 +29,7 @@ export const routes: Routes = [
     {
         title: "User - Sign",
         path: "user-sign",
-        component: LocationsComponent,
+        component: UserSignComponent,
     },
     {
         title: "Explore Hotels",
@@ -42,12 +38,12 @@ export const routes: Routes = [
     },
     {
         title: "Pick a room",
-        path: "hotel/rooms",
+        path: "rooms",
         component: RoomsComponent,
     },
     {
         title: "Room preview",
-        path: "rooms",
+        path: "roomview",
         component: RoomViewComponent,
     },
     {
