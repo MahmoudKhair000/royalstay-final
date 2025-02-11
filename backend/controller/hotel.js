@@ -4,6 +4,7 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
+// this is the "hotel & room" Model
 const hotelModel = require("../model/hotel");
 
 // hotel rooms functions
@@ -92,6 +93,18 @@ const updateHotel = async (req, res) => {
 };
 
 // hotel rooms functions
+const getRoomById = async (req, res) => {
+  try {
+    const { hotelId, roomId } = req.body;
+    const hotel = await hotelModel.findOne({ _id: hotelId });
+    const hotelRooms = await hotel.rooms;
+    const room = await hotelRooms.find((x) => x._id == roomId);
+    res.json(room);
+  } catch (err) {
+    res.status(404).send(err.message);
+  }
+};
+
 const getHotelRooms = async (req, res) => {
   try {
     const { hotelId } = req.params;
@@ -196,7 +209,6 @@ const updateHotelRoom = async (req, res) => {
     res.status(406).send(err.message);
   }
 };
-
 module.exports = {
   // Hotel Functions
   getHotels,
@@ -206,6 +218,7 @@ module.exports = {
   deleteHotel,
   updateHotel,
   // Room Functions
+  getRoomById,
   getHotelRooms,
   addHotelRoom,
   deleteHotelRoom,

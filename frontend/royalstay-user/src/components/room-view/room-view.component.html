@@ -1,1 +1,15 @@
-<p>room-view works!</p>
+<div class="bg-art-one">
+  <div class="container py-4">
+    <h1 class=""><i class="bi"></i> Room Preview</h1>
+  </div>
+  <div class="d-flex overflow-x-scroll">
+    @for (image of roomImages; track $index) {
+    <img class="room-img p-3" src="{{ image }}" alt="image {{ $index + 1 }}" />
+    }
+  </div>
+  <div class="container">
+    <div class="room-desc">
+      {{ room.description }}
+    </div>
+  </div>
+</div>

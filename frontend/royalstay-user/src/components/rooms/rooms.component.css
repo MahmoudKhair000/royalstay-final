@@ -1,35 +1,40 @@
+/* Start Hotels */
 .hotel-box {
-    background-color: var(--bg-one);
-    border: var(--border-one);
-    border-radius: var(--radius-one);
-    overflow: hidden;
-  }
-  
-  .hotel-box .hotel-img {
-    height: 240px;
-    overflow: hidden;
-  }
-  
-  .hotel-box .hotel-img img {
-    object-fit: cover;
-    min-height: 240px;
-    width: 100%;
-  }
-  
-  .hotel-box .hotel-info {
-    /* height: 200px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-  
-  .hotel-box .hotel-btn{
-    font-size: 25px;
-    padding: 10px 30px;
-    color: #f5f5f5;
-    border: 0;
-    height: 60px;
-    border-radius: 30px;
-    align-self: flex-end;
-    background-color: #003366;
-  }
+  background-color: var(--bg-one);
+  border: var(--border-one);
+  border-radius: var(--radius-one);
+  overflow: hidden;
+}
+
+.hotel-box .hotel-img {
+  height: 240px;
+  overflow: hidden;
+}
+
+.hotel-box .hotel-img img {
+  object-fit: cover;
+  min-height: 240px;
+  width: 100%;
+}
+
+.hotel-box .hotel-info {
+  /* height: 200px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.hotel-box .hotel-info h4 {
+  width: max-content;
+  height: min-content;
+}
+.hotel-box .hotel-btn {
+  font-size: 25px;
+  padding: 10px 30px;
+  color: #f5f5f5;
+  border: 0;
+  height: 60px;
+  border-radius: 30px;
+  align-self: flex-end;
+  background-color: #003366;
+}

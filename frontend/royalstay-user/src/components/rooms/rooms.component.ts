@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
