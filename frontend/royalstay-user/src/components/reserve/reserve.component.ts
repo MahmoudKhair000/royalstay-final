@@ -25,7 +25,7 @@ export class ReserveComponent {
 
   constructor(private http: HttpClient) {
     this.http
-      .get(`http://localhost:4000/user/id/${localStorage.getItem("userId")}`)
+      .post(`http://localhost:4000/user/id`, { userId: localStorage.getItem("userId") })
       .subscribe((user: any) => {
         console.log(user)
         this.resevreData.name = `${user.firstName} ${user.lastName}`

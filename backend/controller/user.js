@@ -13,10 +13,10 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.body;
   try {
-    const user = await userModel.findOne({ _id: `${userId}` }).toObject;
-    res.send({ user: user });
+    const user = await userModel.findOne({ _id: userId });
+    res.send(user);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
