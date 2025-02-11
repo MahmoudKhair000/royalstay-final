@@ -1,4 +1,8 @@
 @import url("../../styles.css");
+* {
+  color: var(--navy);
+}
+
 .container {
   margin: 0 auto;
   width: 90%;

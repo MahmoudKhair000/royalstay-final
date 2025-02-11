@@ -1,4 +1,7 @@
 /* Start Hotels */
+*{
+  color: var(--navy);
+}
 .hotel-box {
   background-color: var(--bg-one);
   border: var(--border-one);

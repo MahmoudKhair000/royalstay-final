@@ -1,0 +1,99 @@
+.section-partners {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    padding: 50px 0;
+}
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.section-partners::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+.section-partners h1 {
+    font-size: 50px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.section-partners button {
+    background-color: rgb(14, 104, 206);
+    font-size: 18px;
+    border-radius: 8px;
+    width: 50%;
+}
+.section-partners button:hover{
+    color: #ffffff;
+    background-color: rgb(82, 136, 197);
+}
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 50px;
+    background-color: rgba(85, 85, 85, 0.5);
+    /* width: 90%;
+    margin-left: 80px;
+    height: 50%; */
+}
+.card img {
+    object-fit: cover;
+    height: 350px;
+    width: 100%;
+    margin: 20px;
+}
+.card-body {
+    padding: 40px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.card button{
+    background-color: rgb(14, 104, 206);
+    font-size: larger;
+    color: #ffffff;
+}
+.card button:hover{
+    color: #ffffff;
+    background-color: rgb(82, 136, 197);
+}
+.card-title, .card-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 400px) {
+    .section-partners h1 {
+        font-size: 40px;
+        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .section-partners button {
+        width: 100%;
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    .card img {
+        width: 100%;
+        margin: 20px;
+    }
+}

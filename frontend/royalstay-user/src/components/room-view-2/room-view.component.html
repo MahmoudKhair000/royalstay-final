@@ -1,0 +1,65 @@
+<section class="container" *ngIf="room">
+    <h1>Details of Room</h1>
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-12 col-12">
+        <div class="details-container">
+          <div class="details-item" *ngIf="room.roomType">
+            <div class="details-icon"><i class="bi bi-bookmarks"></i></div>
+            <h3 class="details-label">Type</h3>
+            <label class="details-value">{{ room.roomType }}</label>
+          </div>
+          
+          <div class="details-item" *ngIf="room.price">
+            <div class="details-icon"><i class="bi bi-currency-dollar"></i></div>
+            <h3 class="details-label">Price</h3>
+            <label class="details-value">{{ room.price }}$</label>
+          </div>
+  
+          <div class="details-item" *ngIf="room.class">
+            <div class="details-icon"><i class="bi bi-wallet2"></i></div>
+            <h3 class="details-label">Class</h3>
+            <label class="details-value">{{ room.class }}</label>
+          </div>
+
+          <div class="details-item" *ngIf="room.description">
+            <div class="details-icon"><i class="bi bi-card-text"></i></div>
+            <h3 class="details-label">Description</h3>
+            <p class="details-value">{{ room.description }}</p>
+          </div>
+          <div class="details-item" *ngIf="room.count !== undefined">
+            <div class="details-icon"><i class="bi bi-hash"></i></div>
+            <h3 class="details-label">Available Rooms</h3>
+            <label class="details-value">{{ room.count }}</label>
+          </div>
+
+          <div class="details-item" *ngIf="room.createdAt">
+            <div class="details-icon"><i class="bi bi-clock"></i></div>
+            <h3 class="details-label">Created At</h3>
+            <label class="details-value">{{ room.createdAt }}</label>
+          </div>
+  
+  
+      </div>
+  
+      <div class="col-lg-6 col-md-12 col-12 ps-lg-5 mt-md-5">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" *ngIf="room.imagesurl.length">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let image of room.imagesurl; let i = index" [class.active]="i === 0">
+              <div class="carousel-image-container">
+                <img [src]="image" class="d-block w-100" [alt]="'Image ' + (i + 1)">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
