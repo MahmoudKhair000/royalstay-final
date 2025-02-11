@@ -15,8 +15,8 @@ import { FormsModule } from '@angular/forms';
 
 export class ResQueryComponent {
   reservations: any = {};
-  userId: any = `675074f54aa1968e289d6d6b`;
-  hotelId: any = `675074f54aa1968e289d6d6b`;
+  userId: any = localStorage.getItem("userId");
+  hotelId: any = localStorage.getItem("hotelId");
   roomType: any = `Single`;
 
   reserve() {

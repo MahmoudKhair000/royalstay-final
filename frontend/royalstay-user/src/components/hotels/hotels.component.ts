@@ -33,6 +33,6 @@ export class HotelsComponent {
 
   hotel: any = {}
   goToHotel(hotelId: any) {
-    sessionStorage.setItem("hotelId", hotelId)
+    localStorage.setItem("hotelId", hotelId)
   }
 }

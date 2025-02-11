@@ -4,11 +4,11 @@ import { LocationsComponent } from '../components/locations/locations.component'
 import { ServicesComponent } from '../components/services/services.component';
 import { ResQueryComponent } from '../components/res-query/res-query.component';
 import { HotelsComponent } from '../components/hotels/hotels.component';
-import { ResFormComponent } from '../components/res-form/res-form.component';
 import { RoomsComponent } from '../components/rooms/rooms.component';
 import { RoomViewComponent } from '../components/room-view/room-view.component';
 import { AboutComponent } from '../components/about/about.component';
 import { UserSignComponent } from '../components/user-sign/user-sign.component';
+import { ReserveComponent } from '../components/reserve/reserve.component';
 
 export const routes: Routes = [
     {
@@ -48,8 +48,8 @@ export const routes: Routes = [
     },
     {
         title: "Reserve",
-        path: "res-form",
-        component: ResFormComponent,
+        path: "reserve",
+        component: ReserveComponent,
     },
     {
         title: "Reservations",

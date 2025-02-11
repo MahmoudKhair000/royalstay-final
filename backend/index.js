@@ -13,9 +13,9 @@ app.use(
   })
 );
 dotenv.config();
-// .connect("mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp")
+// .connect("mongodb://localhost:27017/hotelapp")
 mongoose
-  .connect("mongodb://localhost:27017/hotelapp")
+.connect("mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp")
   .then(() => {
     console.log("connected to db successefully");
   })
@@ -32,8 +32,5 @@ app.use("/user", userRoutes);
 app.use("/hotel", hotelRoutes);
 app.use("/room", roomRoutes);
 app.use("/reservation", reservationRoutes);
-
-
-
 
 app.listen(4000, () => console.log("connected to port 4000"));

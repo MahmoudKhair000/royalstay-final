@@ -3,7 +3,7 @@
   <div class="cont-fluid">
     <div class="row">
       <div class="logo-sec col col-lg-3 col-md-4 col-sm-8 d-flex">
-        <a routerLink="">
+        <a routerLink="/">
           <img
             class="logo align-self-center"
             src="assets/logos/logo.svg"
@@ -23,9 +23,15 @@
           </ul>
         </div>
         <div class="user dropdown">
+          @if (!userId) {
           <a routerLink="user-sign">
             <i class="bi bi-person-circle dropdown-toggle sm-hide"> </i>
           </a>
+          }@else {
+          <a routerLink="user-sign">
+            <i class="bi bi-check-circle dropdown-toggle sm-hide"> </i>
+          </a>
+          }
           <i
             class="bi bi-list navbar-toggler d-none sm-show"
             type="button"
@@ -61,10 +67,7 @@
                 class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
               >
                 <li class="nav-item ms-4 mx-2">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    routerLink="/"
+                  <a class="nav-link active" aria-current="page" routerLink="/"
                     >Home</a
                   >
                 </li>

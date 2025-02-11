@@ -1,1 +1,150 @@
-<p>user-sign works!</p>
+<div class="bg-art-one">
+  <div class="py-5">
+    @if (!userId) {
+    <div
+      #container
+      class="container m-auto"
+      [ngClass]="{ active: isRegisterMode }"
+    >
+      <!-- ************* LOGIN ************* -->
+      <div class="form-box login">
+        <form (ngSubmit)="loginUser()" *ngIf="!isRegisterMode">
+          <h1>Login as a User</h1>
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Email"
+              [(ngModel)]="credentials.email"
+              name="email"
+              required
+            />
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="input-box">
+            <input
+              type="password"
+              placeholder="Password"
+              [(ngModel)]="credentials.password"
+              name="password"
+              required
+            />
+            <i class="bi bi-lock-fill"></i>
+          </div>
+          <div class="forgot-link">
+            <a href="#">Forgot Password?</a> |
+            <a href="#">Want to book a room?</a>
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+      </div>
+
+      <!-- ************* REGISTER ************* -->
+      <div class="form-box register">
+        <form (ngSubmit)="registerUser()" *ngIf="isRegisterMode">
+          <h1>Create Account</h1>
+
+          <div class="input-group">
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="First Name"
+                [(ngModel)]="userData.firstName"
+                name="firstName"
+                required
+              />
+              <i class="bi bi-person"></i>
+            </div>
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Last Name"
+                [(ngModel)]="userData.lastName"
+                name="lastName"
+                required
+              />
+              <i class="bi bi-person"></i>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="email"
+              placeholder="Email"
+              [(ngModel)]="userData.email"
+              name="email"
+              required
+            />
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+
+          <div class="input-group">
+            <div class="input-box">
+              <input
+                type="tel"
+                placeholder="Phone"
+                [(ngModel)]="userData.phone"
+                name="phone"
+                required
+              />
+              <i class="bi bi-telephone"></i>
+            </div>
+            <div class="input-box">
+              <input
+                type="number"
+                placeholder="Age"
+                [(ngModel)]="userData.age"
+                name="age"
+                required
+              />
+              <i class="bi bi-calendar-date"></i>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <select [(ngModel)]="userData.gender" name="gender" required>
+              <option value="" disabled selected>Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <i class="bi bi-gender-ambiguous"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="password"
+              placeholder="Password"
+              [(ngModel)]="userData.password"
+              name="password"
+              required
+            />
+            <i class="bi bi-lock-fill"></i>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+        </form>
+      </div>
+
+      <div class="toggle-box">
+        <div class="toggle-panel toggle-left">
+          <h1>Hello, Welcome!</h1>
+          <p>Don't have an account?</p>
+          <button class="btn register-btn" (click)="toggleMode()">
+            Register
+          </button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Welcome Back!</h1>
+          <p>Already have an account?</p>
+          <button class="btn login-btn" (click)="toggleMode()">Login</button>
+        </div>
+      </div>
+    </div>
+    }@else {
+    <div class="w-100 row justify-content-center">
+      <button type="button" (click)="logOut()" class="btn w-50 m-auto">
+        Log Out
+      </button>
+    </div>
+    }
+  </div>
+</div>

@@ -11,11 +11,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class RoomsComponent {
   rooms: any = {};
   goToRoom(roomId: any) {
-    sessionStorage.setItem("roomId", roomId)
+    localStorage.setItem("roomId", roomId)
   }
   getRooms() {
     this.http
-      .get(`http://localhost:4000/hotel/${sessionStorage.getItem("hotelId")}`)
+      .get(`http://localhost:4000/hotel/${localStorage.getItem("hotelId")}`)
       .subscribe((result: any) => {
         try {
           this.rooms = result.rooms

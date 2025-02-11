@@ -1,15 +1,92 @@
-<div class="bg-art-one">
-  <div class="container py-4">
+<div class="bg-art-one py-5">
+  <div class="container pt-5">
     <h1 class="mt-3"><i class="bi"></i> Room Preview</h1>
   </div>
-  <div class="d-flex overflow-x-scroll">
-    @for (image of roomImages; track $index) {
-    <img class="room-img p-3" src="{{ image }}" alt="image {{ $index + 1 }}" />
-    }
-  </div>
-  <div class="container py-5">
-    <div class="room-desc">
-      {{ room.description }}
+  <section class="container my-5" *ngIf="room">
+    <div class="row align-items-center">
+      <div class="col-lg-10 col-md-12 col-12 m-auto">
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide w-100 my-5"
+          data-bs-ride="carousel"
+          data-bs-interval="2000"
+          *ngIf="room.imagesurl.length"
+        >
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="let image of room.imagesurl; let i = index"
+              [class.active]="i === 0"
+            >
+              <div class="carousel-image-container">
+                <img
+                  [src]="image"
+                  class="d-block w-100"
+                  [alt]="'Image ' + (i + 1)"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="details-container">
+          <div class="details-item" *ngIf="room.roomType">
+            <div class="details-icon"><i class="bi bi-bookmarks"></i></div>
+            <h3 class="details-label">Type</h3>
+            <label class="details-value">{{ room.roomType }}</label>
+          </div>
+
+          <div class="details-item" *ngIf="room.price">
+            <div class="details-icon">
+              <i class="bi bi-currency-dollar"></i>
+            </div>
+            <h3 class="details-label">Price</h3>
+            <label class="details-value">{{ room.price }}$</label>
+          </div>
+
+          <div class="details-item" *ngIf="room.class">
+            <div class="details-icon"><i class="bi bi-wallet2"></i></div>
+            <h3 class="details-label">Class</h3>
+            <label class="details-value">{{ room.class }}</label>
+          </div>
+
+          <div class="details-item" *ngIf="room.count !== undefined">
+            <div class="details-icon"><i class="bi bi-hash"></i></div>
+            <h3 class="details-label">Available Rooms</h3>
+            <label class="details-value">{{ room.count }}</label>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <div class="container room-desc p-4 mb-5 fs-3">
+    <h2 class="ps-3 fs-1">Description</h2>
+    <br />
+    {{ room.description }}
+    <br />
+    <button
+      class="hotel-btn m-2"
+      routerLink="../reserve"
+      (click)="reserve(room._id)"
+    >
+      Book &UpperRightArrow;
+    </button>
   </div>
 </div>

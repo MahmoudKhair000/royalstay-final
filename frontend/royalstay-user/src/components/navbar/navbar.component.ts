@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserSignComponent } from '../user-sign/user-sign.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,4 +14,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export class NavbarComponent {
 
+  userId:any = localStorage.getItem("userId")
+
+  constructor( private router: Router){}
+  logOut() {
+    localStorage.removeItem("userId")
+    this.router.navigate(['../'])
+  }
 }

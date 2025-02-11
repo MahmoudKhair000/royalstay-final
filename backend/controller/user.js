@@ -12,11 +12,21 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const user = await userModel.findOne({ _id: `${userId}` }).toObject;
+    res.send({ user: user });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
 const register = async (req, res) => {
   let newuser = req.body;
   try {
     let saveuser = await userModel.create(newuser);
-    res.json({ message: "done new user", date: saveuser });
+    res.send(saveuser);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -26,24 +36,24 @@ const login = async (req, res) => {
   let { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: "Enter email and password !!" });
-  }
-
-  const user = await userModel.findOne({ email });
-  if (!user) {
-    return res.status(404).json({ message: "invalid Email or Password" });
-  }
-
-  let isValid = await bcrypt.compare(password, user.password);
-  if (isValid) {
-    let token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.secret,
-      { expiresIn: "1 Day" }
-    );
-    res.status(200).json({ message: "successful login", token: token });
   } else {
-    res.status(401).json({ message: "invalid Email or Password" });
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "invalid Email or Password" });
+    } else {
+      let isValid = await bcrypt.compare(password, user.password);
+      if (isValid) {
+        let token = jwt.sign(
+          { id: user._id, email: user.email },
+          process.env.secret,
+          { expiresIn: "1Hrs" }
+        );
+        res.status(200).send({ user: user, token: token });
+      } else {
+        res.status(401).send({ message: "invalid Email or Password" });
+      }
+    }
   }
 };
 
-module.exports = { getAllUsers, register, login };
+module.exports = { getAllUsers, getUserById, register, login };
