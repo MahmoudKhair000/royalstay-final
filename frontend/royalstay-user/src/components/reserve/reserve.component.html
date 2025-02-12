@@ -1,37 +1,38 @@
-<div class="bg-art-one">
-  <div class="box">
+<div class="bg-art-one py-5">
+  <form (submit)="bookRooms()" class="box">
     <div class="elem-group inlined">
-      <label for="name">Your Name</label>
-      <p class="custom-box">{{ resevreData.name }}</p>
+      <label>Your Name</label>
+      <p class="custom-box">{{ resevreData.userName }}</p>
     </div>
     <div class="elem-group inlined">
-      <label for="email">Your E-mail</label>
-      <p class="custom-box">{{ resevreData.email }}</p>
+      <label>Your E-mail</label>
+      <p class="custom-box">{{ resevreData.userMail }}</p>
     </div>
     <div class="elem-group inlined">
-      <label for="phone">Your Phone</label>
-      <p class="custom-box">{{ resevreData.phone }}</p>
+      <label>Your Phone</label>
+      <p class="custom-box">{{ resevreData.userPhone }}</p>
     </div>
     <hr />
     <div class="elem-group inlined">
-      <label for="type">Room Type</label>
+      <label>Room Type</label>
       <p class="custom-box">{{ resevreData.roomType }}</p>
     </div>
     <div class="elem-group inlined">
-      <label for="class">Room Class</label>
+      <label>Room Class</label>
       <p class="custom-box">{{ resevreData.roomClass }}</p>
     </div>
     <div class="elem-group inlined">
-      <label for="child">Salary Per Day</label>
-      <p class="custom-box">{{ resevreData.salaryPerDay }}</p>
+      <label>Salary Per Day</label>
+      <p class="custom-box">{{ resevreData.roomPrice }}</p>
     </div>
     <div class="elem-group inlined">
       <label for="checkin-date">Check-in Date</label>
       <input
         type="date"
         id="checkin-date"
+        [(min)]="today"
         name="checkin"
-        [(ngModel)]="resevreData.checkinDate"
+        [(ngModel)]="checkinDate"
         required
       />
     </div>
@@ -40,14 +41,16 @@
       <input
         type="date"
         id="checkout-date"
+        [(min)]="checkinDate"
         name="checkout"
-        [(ngModel)]="resevreData.checkoutDate"
+        [(ngModel)]="checkoutDate"
+        (ngModelChange)="makeDateArray(checkinDate, checkoutDate)"
         required
       />
     </div>
     <div class="elem-group inlined">
-      <label for="child">Total Salary</label>
-      <p class="custom-box">{{ resevreData.totalSalary }}</p>
+      <label>Total Price</label>
+      <p class="custom-box">{{ resevreData.total }}</p>
     </div>
     <hr />
     <div class="elem-group">
@@ -55,34 +58,12 @@
       <textarea
         id="message"
         name="visitor_message"
-        [(ngModel)]="resevreData.visitorMessage"
+        [(ngModel)]="resevreData.notes"
         placeholder="Tell us anything else that might be important."
         required
       ></textarea>
     </div>
-    <button (click)="bookRooms()">Book The Rooms</button>
-  </div>
+    <button type="submit">Reserve Now</button>
+    <!-- [routerLink]="['../']" -->
+  </form>
 </div>
-<script>
-  // Define the start and end dates
-  const startDate = new Date("2025-02-01");
-  const endDate = new Date("2025-02-10");
-
-  // Function to generate all dates between two dates
-  const getDatesBetween = (start, end) => {
-    let dates = [];
-    let currentDate = new Date(start);
-
-    while (currentDate <= end) {
-      dates.push(new Date(currentDate).toISOString().split("T")[0]); // Format: YYYY-MM-DD
-      currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
-    }
-    return dates;
-  };
-
-  // Generate the dates and save them to a file
-  const datesBetween = getDatesBetween(startDate, endDate);
-  // fs.writeFileSync('dates_between.json', JSON.stringify(datesBetween, null, 2));
-
-  console.log("Dates saved to dates_between.json:", datesBetween);
-</script>

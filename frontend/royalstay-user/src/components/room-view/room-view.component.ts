@@ -10,6 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './room-view.component.css'
 })
 export class RoomViewComponent {
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+  
   rooms: any = [];
   room: any = {};
   roomImages: any = [];

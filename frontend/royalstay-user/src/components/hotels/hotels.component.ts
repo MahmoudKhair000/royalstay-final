@@ -9,6 +9,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hotels.component.css'
 })
 export class HotelsComponent {
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
   hotels: any = {}
   getHotels() {
     this.http

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-locations',
@@ -10,5 +11,7 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './locations.component.css'
 })
 export class LocationsComponent {
-
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

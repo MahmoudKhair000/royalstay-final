@@ -12,6 +12,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+      
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+
   hotels: any = {}
   getHotels() {
     this.http

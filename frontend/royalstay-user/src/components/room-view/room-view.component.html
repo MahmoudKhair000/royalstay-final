@@ -81,12 +81,14 @@
     <br />
     {{ room.description }}
     <br />
-    <button
-      class="hotel-btn m-2"
-      routerLink="../reserve"
-      (click)="reserve(room._id)"
-    >
-      Book &UpperRightArrow;
-    </button>
+    <div class="d-flex justify-content-end my-4">
+      <button
+        class="reserve-btn m-2"
+        routerLink="../reserve"
+        (click)="reserve(room._id)"
+      >
+        Book &UpperRightArrow;
+      </button>
+    </div>
   </div>
-</div>
+  </div>

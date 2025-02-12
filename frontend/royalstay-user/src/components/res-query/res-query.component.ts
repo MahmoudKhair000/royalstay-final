@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ResQueryComponent {
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+
   reservations: any = {};
   userId: any = localStorage.getItem("userId");
   hotelId: any = localStorage.getItem("hotelId");

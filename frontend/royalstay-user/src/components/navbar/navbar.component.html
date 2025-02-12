@@ -3,7 +3,7 @@
   <div class="cont-fluid">
     <div class="row">
       <div class="logo-sec col col-lg-3 col-md-4 col-sm-8 d-flex">
-        <a routerLink="/">
+        <a [routerLink]="['/']">
           <img
             class="logo align-self-center"
             src="assets/logos/logo.svg"
@@ -14,24 +14,24 @@
       <div class="menu-sec col col-lg-8 col-md-8 col-sm-4 d-flex">
         <div class="menu sm-hide d-flex w-100">
           <ul class="row">
-            <li class="col"><a routerLink="/">Home</a></li>
-            <li class="col"><a routerLink="/services">Services</a></li>
-            <li class="col"><a routerLink="/locations">Locations</a></li>
-            <li class="col"><a routerLink="/hotels">Hotels</a></li>
-            <li class="col"><a routerLink="/res-query">Reservation</a></li>
-            <li class="col"><a routerLink="/about">Partners</a></li>
+            <li class="col"><a [routerLink]="['/']">Home</a></li>
+            <li class="col"><a [routerLink]="['/services']">Services</a></li>
+            <li class="col"><a [routerLink]="['/locations']">Locations</a></li>
+            <li class="col"><a [routerLink]="['/hotels']">Hotels</a></li>
+            <li class="col">
+              <a [routerLink]="['/res-query']">Reservation</a>
+            </li>
+            <li class="col"><a [routerLink]="['/about']">Partners</a></li>
           </ul>
         </div>
         <div class="user dropdown">
-          @if (!userId) {
-          <a routerLink="user-sign">
+          <a [routerLink]="['user-sign']">
+            @if (!userId) {
             <i class="bi bi-person-circle dropdown-toggle sm-hide"> </i>
-          </a>
-          }@else {
-          <a routerLink="user-sign">
+            }@else {
             <i class="bi bi-check-circle dropdown-toggle sm-hide"> </i>
+            }
           </a>
-          }
           <i
             class="bi bi-list navbar-toggler d-none sm-show"
             type="button"
@@ -51,7 +51,7 @@
                 class="logo"
                 src="./assets/logos/logo.svg"
                 alt="Company Logo"
-                routerLink="/"
+                [routerLink]="['/']"
               />
               <button
                 type="button"
@@ -67,7 +67,10 @@
                 class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
               >
                 <li class="nav-item ms-4 mx-2">
-                  <a class="nav-link active" aria-current="page" routerLink="/"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    [routerLink]="['/']"
                     >Home</a
                   >
                 </li>
@@ -75,7 +78,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="services"
+                    [routerLink]="['services']"
                     >Services</a
                   >
                 </li>
@@ -83,7 +86,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="locations"
+                    [routerLink]="['locations']"
                     >Locations</a
                   >
                 </li>
@@ -91,7 +94,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="hotels"
+                    [routerLink]="['hotels']"
                     >Hotels</a
                   >
                 </li>
@@ -99,7 +102,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="res-query"
+                    [routerLink]="['res-query']"
                     >Reservation</a
                   >
                 </li>
@@ -107,7 +110,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="about"
+                    [routerLink]="['about']"
                     >Partners</a
                   >
                 </li>
@@ -115,8 +118,8 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="about/contact"
-                    >About Us &hslash;
+                    [routerLink]="['about']"
+                    >About Us 
                   </a>
                 </li>
                 <hr />
@@ -124,7 +127,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    routerLink="user-sign"
+                    [routerLink]="['user-sign']"
                     >Log In</a
                   >
                 </li>

@@ -39,9 +39,10 @@ const getUserReservation = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
 // make reservation
 const reserve = async (req, res) => {
-  const { userId, hotelId, roomType } = req.params;
+  const { userId, hotelId, roomId, reservation } = req.body;
   const user = await userModel.findOne({ _id: userId });
   const hotel = await hotelModel.findOne({ _id: hotelId });
   const room = hotel.rooms.find((x) => x.roomType == roomType);
@@ -54,27 +55,14 @@ const reserve = async (req, res) => {
     toDate(`2025-02-07`),
   ];
   try {
-    let reservation = {
-      user: user._id,
-      userName: user.firstName + " " + user.lastName,
-      userMail: user.email,
-      userPhone: user.phone,
-      userAge: user.age,
-      hotel: hotel._id,
-      hotelName: hotel.name,
-      hotelMail: hotel.email,
-      hotelPhone: hotel.phone,
-      roomType: room.roomType,
-      roomPrice: room.price,
-      days: resDays,
-      total: resDays.length * room.price,
-    };
     await reserveModel.create(reservation);
     res.send({ message: "Done reservation!!", data: reservation });
   } catch (err) {
     res.status(404).send(err.message);
   }
 };
+
+
 // change reservation
 const change = async (req, res) => {
   let { userId, hotelId, roomType } = req.params;

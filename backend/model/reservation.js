@@ -15,9 +15,11 @@ let reserveSchema = mongoose.Schema({
   hotelPhone: { type: String, required: true },
   // room type and price
   roomType: { type: String, required: true },
+  roomClass: { type: String },
   roomPrice: { type: Number, required: true },
-  days: [{ type: Date }],
+  days: [],
   total: { type: Int32 },
+  notes: { type: String },
 });
 
 module.exports = mongoose.model("reservation", reserveSchema);

@@ -13,7 +13,7 @@ const {
 router.get("/", getReservations);
 router.get("/id/:resId", getReservation);
 router.get("/user/:userId", getUserReservation);
-router.post("/:userId/:hotelId/:roomType", reserve);
+router.post("/add", reserve);
 router.put("/:userId/:hotelId/:roomType", change);
 router.delete("/:userId/:resId", cancel);
 

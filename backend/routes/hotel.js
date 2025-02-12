@@ -13,7 +13,7 @@ const {
 
 //http://localhost:4000/hotel
 router.get("/", getHotels);
-router.get("/:hotelId", getHotelById);
+router.post("/id", getHotelById);
 router.post("/register", createHotel);
 router.post("/login", loginHotel);
 router.put("/update/:hotelId", updateHotel);

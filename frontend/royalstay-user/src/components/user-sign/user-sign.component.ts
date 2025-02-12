@@ -17,6 +17,11 @@ import { ResourceLoader } from '@angular/compiler';
   imports: [CommonModule, NgIf, NgClass, FormsModule, MatSnackBarModule]
 })
 export class UserSignComponent {
+
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+
   isRegisterMode: any;
   isSignedIN: boolean = false
 

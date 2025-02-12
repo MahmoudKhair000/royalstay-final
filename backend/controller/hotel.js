@@ -18,7 +18,7 @@ const getHotels = async (req, res) => {
   }
 };
 const getHotelById = async (req, res) => {
-  const { hotelId } = req.params;
+  const { hotelId } = req.body;
   const hotel = await hotelModel.findOne({ _id: hotelId });
   try {
     res.json(hotel);
