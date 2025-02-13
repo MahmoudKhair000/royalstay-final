@@ -45,7 +45,7 @@ const reserve = async (req, res) => {
   const { userId, hotelId, roomId, reservation } = req.body;
   const user = await userModel.findOne({ _id: userId });
   const hotel = await hotelModel.findOne({ _id: hotelId });
-  const room = hotel.rooms.find((x) => x.roomType == roomType);
+  const room = hotel.rooms.find((x) => x.roomId == roomId);
   // find() will find one item/object, But filter() will make a new array
   // array of reservation days
   new Date();

@@ -14,6 +14,7 @@ let reserveSchema = mongoose.Schema({
   hotelMail: { type: String, required: true },
   hotelPhone: { type: String, required: true },
   // room type and price
+  room: { type: mongoose.Types.ObjectId },
   roomType: { type: String, required: true },
   roomClass: { type: String },
   roomPrice: { type: Number, required: true },

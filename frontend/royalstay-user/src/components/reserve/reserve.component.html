@@ -33,6 +33,7 @@
         [(min)]="today"
         name="checkin"
         [(ngModel)]="checkinDate"
+        (ngModelChange)="checkoutDate = null"
         required
       />
     </div>
@@ -64,6 +65,7 @@
       ></textarea>
     </div>
     <button type="submit">Reserve Now</button>
-    <!-- [routerLink]="['../']" -->
   </form>
 </div>
+
+<!-- [routerLink]="['../res-query']" -->

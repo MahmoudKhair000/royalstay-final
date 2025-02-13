@@ -22,24 +22,19 @@ export class ResQueryComponent {
   userId: any = localStorage.getItem("userId");
   hotelId: any = localStorage.getItem("hotelId");
   roomType: any = `Single`;
+  resDays = [];
 
-  reserve() {
+  constructor(public http: HttpClient) {
     this.http
       .get(`http://localhost:4000/reservation/user/${this.userId}`/*, { request-body-object } */)
       .subscribe((result) => {
-        try {
-          // console.log(typeof (result))
-          if ((typeof (result)).toString() != `object`) {
-            this.reservations = [result];
-          } else {
-            this.reservations = result;
-          }
-          // console.log(this.reservations)
-        } catch (err: any) {
-          alert(err.message);
+        console.log(typeof (result))
+        if ((typeof (result)).toString() != `object`) {
+          this.reservations = [result];
+        } else {
+          this.reservations = result;
         }
+        console.log(this.reservations)
       })
   };
-
-  constructor(private http: HttpClient) { this.reserve() };
 }

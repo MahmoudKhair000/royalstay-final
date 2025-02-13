@@ -14,9 +14,9 @@ import { UserSignComponent } from '../user-sign/user-sign.component';
 
 export class NavbarComponent {
 
-  userId:any = localStorage.getItem("userId")
-
-  constructor( private router: Router){}
+  // userId:any = localStorage.getItem("userId")
+  localStorage(item: any) { return localStorage.getItem(item); }
+  constructor(private router: Router) { }
   logOut() {
     localStorage.removeItem("userId")
     this.router.navigate(['../'])

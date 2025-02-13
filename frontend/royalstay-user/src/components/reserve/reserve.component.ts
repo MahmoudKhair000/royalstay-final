@@ -23,46 +23,29 @@ export class ReserveComponent {
   }
 
   today: string = new Date().toISOString().split("T")[0];
-  checkinDate: any = this.today;
+  checkinDate: any = ``;
   checkoutDate: any = ``;
 
-  days: any = [];
   currentDate: Date = new Date();
+  days = [``];
 
-  resevreData: any = {
+  resevreData = {
     user: ``,
-    userName: "autofill",
-    userMail: "autofill",
-    userPhone: "autofill",
+    userName: ``,
+    userMail: ``,
+    userPhone: ``,
     userAge: 0,
     hotel: ``,
     hotelName: ``,
     hotelMail: ``,
     hotelPhone: ``,
-    roomType: "autofill",
-    roomClass: "autofill",
-    roomPrice: "autofill",
-    days: [],
-    total: "autofill",
+    room: ``,
+    roomType: ``,
+    roomClass: ``,
+    roomPrice: 0,
+    days: [``],
+    total: 0,
     notes: ``,
-  }
-
-  makeDateArray(start: string, end: string) {
-    this.currentDate = new Date(start);
-
-    while (new Date((end)) >= this.currentDate) {
-
-      this.days.push(`${(this.currentDate).toISOString().split(`T`)[0]}`);
-      this.currentDate.setDate((this.currentDate.getDate()) + 1);
-
-      if (new Date((end)) == this.currentDate) {
-        this.resevreData.days = [...(this.days)];
-      }
-    }
-
-    console.log(this.checkinDate);
-    console.log(this.checkoutDate);
-    console.log(this.days);
   }
 
   constructor(public http: HttpClient, public router: Router) {
@@ -84,31 +67,56 @@ export class ReserveComponent {
         this.resevreData.hotelName = hotel.name;
         this.resevreData.hotelMail = hotel.email;
         this.resevreData.hotelPhone = hotel.phone;
-      })
+      });
     this.http
       .post(`http://localhost:4000/room/id`, { hotelId: localStorage.getItem("hotelId"), roomId: localStorage.getItem("roomId") })
       .subscribe((room: any) => {
         console.log(room);
+        this.resevreData.room = `${room._id}`;
         this.resevreData.roomType = `${room.roomType}`;
         this.resevreData.roomClass = `${room.class}`;
         this.resevreData.roomPrice = room.price;
-        this.resevreData.total = room.price * 3;
-      })
+      });
   }
 
+  makeDateArray(start: string, end: string) {
+    this.currentDate = new Date(start);
 
+    this.days = [];
+    while (new Date((end)) >= this.currentDate) {
+      this.days.push(`${(this.currentDate).toISOString().split(`T`)[0]}`);
+      this.currentDate.setDate((this.currentDate.getDate()) + 1);
+    }
+    this.resevreData.days = this.days;
+    this.resevreData.total = this.resevreData.roomPrice * this.resevreData.days.length;
+
+    // console.log("out:", this.days);
+    // console.log(this.days.length);
+    // console.log(`-------------------------------------------------------------------`);
+    // console.log("in:", this.resevreData.days);
+    // console.log(this.resevreData.days.length);
+  }
 
   bookRooms() {
-    // this.http.post(`http://localhost:4000/reservation/add`, {
-    //   userId: localStorage.getItem("hotelId"),
-    //   hotelId: localStorage.getItem("hotelId"),
-    //   roomId: localStorage.getItem("hotelId"),
-    //   reservation: this.resevreData
-    // }).subscribe((reservation: any) => {
-    //   console.log(reservation);
-    // })
-
-    console.log(this.resevreData);
+    if (this.resevreData.days[0].length != 10) {
+      window.alert("Choose end and start date")
+    } else (
+      this.http
+        .post(`http://localhost:4000/reservation/add`, {
+          userId: localStorage.getItem("hotelId"),
+          hotelId: localStorage.getItem("hotelId"),
+          roomId: localStorage.getItem("hotelId"),
+          reservation: this.resevreData,
+        }).subscribe((res: any) => {
+          try {
+            console.log(res);
+            this.router.navigate(['../res-query'])
+            window.alert('Reserved !!')
+          } catch (err) {
+            window.alert('Error !!')
+            console.log(err);
+          }
+        })
+      )
   }
-  // this.router.navigate(['../'])
 }

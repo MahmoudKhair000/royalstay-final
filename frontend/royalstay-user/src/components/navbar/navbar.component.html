@@ -26,7 +26,7 @@
         </div>
         <div class="user dropdown">
           <a [routerLink]="['user-sign']">
-            @if (!userId) {
+            @if (!localStorage("userId")) {
             <i class="bi bi-person-circle dropdown-toggle sm-hide"> </i>
             }@else {
             <i class="bi bi-check-circle dropdown-toggle sm-hide"> </i>
