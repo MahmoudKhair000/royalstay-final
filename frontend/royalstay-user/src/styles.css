@@ -110,7 +110,7 @@ body {
 /* Scroll test */
 .main {
   width: 100%;
-  height: 1000px;
+  /* height: 1000px; */
 }
 .test-sec {
   padding-top: 120px;

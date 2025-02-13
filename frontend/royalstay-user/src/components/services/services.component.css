@@ -1,0 +1,11 @@
+* {
+  color: var(--navy);
+}
+
+.coming-soon {
+  min-height: calc(100vh - 80px) !important;
+}
+
+.coming-soon h1 {
+  font-size: 60px;
+}

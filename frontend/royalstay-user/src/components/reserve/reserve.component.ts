@@ -8,7 +8,7 @@ import { popResultSelector } from 'rxjs/internal/util/args';
 
 @Component({
   selector: 'app-reserve',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   standalone: true,
   templateUrl: './reserve.component.html',
   styleUrl: './reserve.component.css'
@@ -117,6 +117,6 @@ export class ReserveComponent {
             console.log(err);
           }
         })
-      )
+    )
   }
 }

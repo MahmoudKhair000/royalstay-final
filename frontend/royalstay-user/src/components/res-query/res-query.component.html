@@ -1,7 +1,9 @@
 <div class="bg-art-one py-5">
   <div class="main container">
     <h2 class="mb-4">Reservation Query !!</h2>
-    <table class="table table-bordered text-center radius m-0 overflow-x-scroll">
+    <table
+      class="mb-5 table table-bordered text-center radius m-0 overflow-x-scroll"
+    >
       <thead>
         <tr>
           <!-- <td>user</td> -->
@@ -16,7 +18,6 @@
           <td>Room Price</td>
           <td>Reservation Days</td>
           <td>total</td>
-          <td>Edit</td>
         </tr>
       </thead>
       <tbody>
@@ -34,10 +35,41 @@
           <td>{{ item.roomPrice }}</td>
           <td>{{ item.days.length }}</td>
           <td>{{ item.total }}</td>
-          <td><button class="btn btn-primary p-1">Edit</button></td>
         </tr>
         }
       </tbody>
     </table>
+    <!-- //////////////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////////////////// -->
+    <div class="bookings">
+      <div class="book row">
+        <div class="d-flex align-items-center justify-content-center col-3">
+          <p>Hotel: {{ reservations[0].hotelName }}</p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center col-2">
+          <p>
+            Type: &nbsp; {{ reservations[0].roomType }} <br />Class:
+            {{ reservations[0].roomClass }}
+          </p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center col-3">
+          <p>
+            Starts: {{ reservations[0].days[0] }}
+            <br />
+            Ends: &nbsp;
+            {{ reservations[0].days[reservations[0].days.length - 1] }}
+          </p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center col-2">
+          <p>
+            price: {{ reservations[0].roomPrice }}$ <br />For
+            {{ reservations[0].days.length }} days
+          </p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center col-2">
+          <p>Total: {{ reservations[0].total }}$</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

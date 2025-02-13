@@ -35,6 +35,7 @@ export class HotelsComponent {
   }
 
   hotel: any = {}
+  userId = localStorage.getItem("userId")
   goToHotel(hotelId: any) {
     localStorage.setItem("hotelId", hotelId)
   }

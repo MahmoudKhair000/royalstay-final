@@ -20,9 +20,6 @@ export class ResQueryComponent {
 
   reservations: any = {};
   userId: any = localStorage.getItem("userId");
-  hotelId: any = localStorage.getItem("hotelId");
-  roomType: any = `Single`;
-  resDays = [];
 
   constructor(public http: HttpClient) {
     this.http

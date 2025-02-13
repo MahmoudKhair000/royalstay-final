@@ -122,7 +122,7 @@
   justify-content: space-evenly;
 }
 
-.hotel-box .hotel-btn{
+.hotel-box .hotel-btn {
   font-size: 25px;
   padding: 10px 30px;
   color: #f5f5f5;
@@ -132,3 +132,104 @@
   align-self: flex-end;
   background-color: #003366;
 }
+
+/* Start testimonials */
+
+.testimonial-news .container {
+  padding: 0 !important;
+}
+
+.testimonials,
+.news {
+  width: 49% !important;
+}
+
+@media (max-width: 992px) {
+  .testimonials,
+  .news {
+    width: 100% !important;
+    height:100%;
+  }
+}
+
+/* .cont-row{height: auto;} */
+
+.testimonials,
+.news {
+  padding: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px !important;
+}
+
+.testimonials {
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 2%;
+}
+
+.testimonials div {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.testimonials div:first-child {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.testimonials img,
+.testimonials img + p {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.news {
+  background-color: #272727;
+  margin-right:0;
+  margin-left:0;
+}
+
+.news img {
+  width: 50%;
+  padding: 0;
+  object-fit: cover;
+  object-position: -110px 0;
+}
+
+.news div {
+  color: #fff;
+}
+
+.news-tag {
+  position: relative;
+  margin-top: 10px !important;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--txt-two);
+}
+
+.news-content {
+  margin-top: 15px;
+  width: 90%;
+  color: var(--golden);
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.news-btn {
+  margin-top: 10px;
+  background-color: var(--golden);
+  transition: all 0.5s ease-in;
+}
+
+.news-btn:hover {
+  color: var(--golden);
+  border: 1px solid var(--golden);
+}
+
+/* End testimonials */

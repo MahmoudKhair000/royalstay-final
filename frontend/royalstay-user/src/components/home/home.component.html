@@ -24,81 +24,127 @@
     </div>
   </div>
 </div>
-
-<!-- Services -->
-<div class="actions py-5">
-  <div class="container">
-    <h1 class="mb-4"><i class="bi bi-bullseye"></i>&nbsp;Quick Actions</h1>
-    <div class="row align-items-center justify-content-center">
-      <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
-        <a [routerLink]="['hotels']">
-          <div
-            class="action text-center align-items-center justify-content-center"
-          >
-            <i class="bi bi-calendar-plus"></i>
-            <h4 class="mt-2">Explore</h4>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
-        <a [routerLink]="['res-query']">
-          <div
-            class="action text-center align-items-center justify-content-center"
-          >
-            <i class="bi bi-tags"></i>
-            <h4 class="mt-2">Special Offers</h4>
-          </div>
-        </a>
-      </div>
-      <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
-        <a [routerLink]="['res-query']">
-          <div
-            class="action text-center align-items-center justify-content-center"
-          >
-            <i class="bi bi-calendar-check"></i>
-            <h4 class="mt-2">Your Reservations</h4>
-          </div>
-        </a>
+<div class="main bg-art-one">
+  <!-- Services -->
+  <div class="actions py-5">
+    <div class="container">
+      <h1 class="mb-4"><i class="bi bi-bullseye"></i>&nbsp;Quick Actions</h1>
+      <div class="row align-items-center justify-content-center">
+        <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
+          <a [routerLink]="['hotels']">
+            <div
+              class="action text-center align-items-center justify-content-center"
+            >
+              <i class="bi bi-calendar-plus"></i>
+              <h4 class="mt-2">Explore</h4>
+            </div>
+          </a>
+        </div>
+        <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
+          <a [routerLink]="['res-query']">
+            <div
+              class="action text-center align-items-center justify-content-center"
+            >
+              <i class="bi bi-tags"></i>
+              <h4 class="mt-2">Special Offers</h4>
+            </div>
+          </a>
+        </div>
+        <div class="p-2 my-4 col-lg-4 col-md-6 col-sm-10">
+          <a [routerLink]="['res-query']">
+            <div
+              class="action text-center align-items-center justify-content-center"
+            >
+              <i class="bi bi-calendar-check"></i>
+              <h4 class="mt-2">Your Reservations</h4>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Hotels -->
-<div class="hotels py-5">
-  <div class="container">
-    <h1 class="mb-4"><i class="bi bi-buildings"></i>&nbsp; Hotels</h1>
-    <div class="row align-items-center justify-content-center">
-      @for (hotel of hotels; track $index) {
-      <div class="p-2 col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
-        <div class="hotel-box">
-          <div class="hotel-img">
-            <img src="assets/images/hotel-view.jpg" alt="hotel preview here" />
-          </div>
-          <div class="hotel-info p-4">
-            <div>
-              <h4 class="m-3">
-                <i class="bi bi-buildings"></i> &nbsp; {{ hotel.name }}
-              </h4>
-              <h4 class="m-3">
-                <i class="bi bi-geo-alt"></i> &nbsp; {{ hotel.city }}
-              </h4>
+  <!-- Hotels -->
+  <div class="hotels py-5">
+    <div class="container">
+      <h1 class="mb-4"><i class="bi bi-buildings"></i>&nbsp; Hotels</h1>
+      <div class="row align-items-center justify-content-center">
+        @for (hotel of hotels; track $index) {
+        <div class="p-2 col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
+          <div class="hotel-box">
+            <div class="hotel-img">
+              <img
+                src="assets/images/hotel-view.jpg"
+                alt="hotel preview here"
+              />
             </div>
-            <button
-              class="hotel-btn m-2"
-              (click)="goToHotel(hotel._id)"
-              [routerLink]="['rooms']"
-            >
-              Book &UpperRightArrow;
-            </button>
+            <div class="hotel-info p-4">
+              <div>
+                <h4 class="m-3">
+                  <i class="bi bi-buildings"></i> &nbsp; {{ hotel.name }}
+                </h4>
+                <h4 class="m-3">
+                  <i class="bi bi-geo-alt"></i> &nbsp; {{ hotel.city }}
+                </h4>
+              </div>
+              <button
+                class="hotel-btn m-2"
+                (click)="goToHotel(hotel._id)"
+                [routerLink]="['rooms']"
+              >
+                Book &UpperRightArrow;
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <!-- testimonials and news -->
+  <div class="testimonial-news">
+    <div class="container pt-2">
+      <div class="pt-5 pb-3 d-flex justify-content-between">
+        <h1>Testimonials</h1>
+        <h1>News</h1>
+      </div>
+      <div class="row pb-5 d-flex justify-content-between">
+        <div
+        class="col-lg-6 p-4 testimonials d-flex flex-column"
+          style="background-image: url('assets/images/message-circle.svg')"
+        >
+          <div class="my-2">
+            <img src="./assets/icons/person.svg" alt="" />
+            Stephe Rodrigue
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="./assets/icons/map-pin.svg" alt="" />
+            <p>Germany</p>
+            <img src="./assets/icons/calendar-golden.svg" alt="" />
+            <p>22-July-2019</p>
+          </div>
+          <p class="mt-4 mb-4">
+            My husband and I went on a cruise aboard the Dolce Vita for our
+            honeymoon and had an amazing time. The staff on the boat was
+            extremely helpful and friendly. The boat was clean, well maintained
+            and the food was good. This trip was unforgettable, the red sea and
+            the islands we had the chance to see were absolutely stunning.
+          </p>
+        </div>
+        <div class="col-lg-6 news row d-flex">
+          <img class="col-6" src="assets/images/news.png" alt="" />
+          <div class="col-6 p-4">
+            <p class="news-tag mb-2">Jun 1, 2018</p>
+            <p class="news-content">
+              A Blue Whale Has Been Spotted in The Red Sea
+            </p>
+            <a class="news-btn btn btn-lg">Learn More</a>
           </div>
         </div>
       </div>
-      }
     </div>
   </div>
+  <!-- End testimonials -->
+  <!-- Just for tests -->
 </div>
-
-<!-- Just for tests -->
-<div class="main bg-art-one"></div>
 
 <!-- Before Footer -->
