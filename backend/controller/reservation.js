@@ -33,8 +33,8 @@ const getReservation = async (req, res) => {
 const getRoomReservations = async (req, res) => {
   const { roomId } = req.params;
   try {
-    const reservation = await reserveModel.find({ room: roomId });
-    res.send(reservation);
+    const reservations = await reserveModel.find({ room: roomId });
+    res.send(reservations);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
@@ -71,7 +71,6 @@ const reserve = async (req, res) => {
     res.status(404).send(err.message);
   }
 };
-
 
 // change reservation
 const change = async (req, res) => {

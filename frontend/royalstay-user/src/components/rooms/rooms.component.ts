@@ -14,11 +14,29 @@ export class RoomsComponent {
     window.scrollTo(0, 0);
   }
 
-  rooms: any = {};
-  hotelName: any;
   goToRoom(roomId: any) {
     localStorage.setItem("roomId", roomId)
     this.router.navigate(['../roomview/'])
+  }
+
+  rooms: any = {};
+  hotelName: any;
+
+  roomCount: any = [];
+
+  getCount() {
+    let rooms = this.rooms;
+    this.roomCount = [];
+    for (let i = 0; i < rooms.length; i++) {
+      this.http
+        .get(`http://localhost:4000/reservation/room/${rooms[i]._id}`)
+        .subscribe((reserved: any) => {
+          console.log(reserved);
+          this.roomCount.push(reserved.length)
+          console.log(reserved.length);
+        })
+    }
+    console.log(this.roomCount);
   }
 
   getRooms() {
@@ -26,40 +44,17 @@ export class RoomsComponent {
       .post(`http://localhost:4000/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
       .subscribe((result: any) => {
         try {
-          this.rooms = result.rooms
-          this.hotelName = result.name
-          console.log(result.rooms)
+          this.rooms = result.rooms;
+          this.hotelName = result.name;
+          console.log(result.rooms);
+          this.getCount();
         } catch (err: any) {
           alert(err.message)
         }
       })
   }
 
-
-
-
-  reservations = []
-  roomCount = [``];
-  getCount() {
-    for (let i = 0; i < this.rooms; i++) {
-      let roomId = this.rooms[i]._id
-      this.http
-        .get(`http://localhost:4000/reservation/room/${roomId}`)
-        .subscribe((reserved: any) => {
-          try {
-            this.reservations = reserved;
-            this.roomCount.push(reserved.length)
-            console.log(reserved);
-            console.log(this.roomCount);
-          } catch (err: any) {
-            console.log(err.message)
-          }
-        })
-    }
-  }
-
   constructor(private http: HttpClient, private router: Router) {
-    this.getRooms()
-    this.getCount()
+    this.getRooms();
   }
 }
