@@ -4,17 +4,16 @@
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  border:var(--border-one)
 }
 /* Track of the scrollbar */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  box-shadow: inset 0 0 3px #036b;
+  box-shadow: inset 0 0 4px #036d;
 }
 /* Handle of the scrollbar */
 ::-webkit-scrollbar-thumb {
   background: #036b;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -93,7 +92,7 @@ body {
 
 /* background patterns */
 .bg-art-one {
-  background-color: #f5f5f5;
+  background-color: var(--bg-one);
   color: #036;
   background-image: var(--gradient-one), var(--pattern-one);
   background-repeat: repeat;

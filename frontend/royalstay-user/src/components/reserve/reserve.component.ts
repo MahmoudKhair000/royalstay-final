@@ -17,7 +17,6 @@ import { popResultSelector } from 'rxjs/internal/util/args';
 
 
 export class ReserveComponent {
-
   ngOnInit() {
     window.scrollTo(0, 0);
   }

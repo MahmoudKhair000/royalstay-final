@@ -166,8 +166,8 @@
 .testimonials {
   background-color: #ffffff;
   background-repeat: no-repeat;
-  background-position-x: 98%;
-  background-position-y: 2%;
+  background-position-x: 95%;
+  background-position-y: -3%;
 }
 
 .testimonials div {
@@ -195,10 +195,10 @@
 }
 
 .news img {
-  width: 50%;
   padding: 0;
+  margin: 0;
   object-fit: cover;
-  object-position: -110px 0;
+  object-position: center;
 }
 
 .news div {

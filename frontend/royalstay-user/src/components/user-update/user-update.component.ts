@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-update.component.css'
 })
 export class UserUpdateComponent {
-
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

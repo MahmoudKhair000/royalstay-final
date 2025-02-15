@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './not-found.component.css'
 })
 export class NotFoundComponent {
-
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 }

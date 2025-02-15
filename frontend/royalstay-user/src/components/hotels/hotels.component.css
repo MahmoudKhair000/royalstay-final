@@ -31,6 +31,7 @@
   width: max-content;
   height: min-content;
 }
+
 .hotel-box .hotel-btn {
   font-size: 25px;
   padding: 10px 30px;
@@ -40,4 +41,9 @@
   border-radius: 30px;
   align-self: flex-end;
   background-color: #003366;
+  transition: var(--transition-one);
+}
+
+.hotel-box .hotel-btn:hover {
+  background-color: var(--gold);
 }

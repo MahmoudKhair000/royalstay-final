@@ -29,6 +29,16 @@ const getReservation = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+// get reservation for room
+const getRoomReservations = async (req, res) => {
+  const { roomId } = req.params;
+  try {
+    const reservation = await reserveModel.find({ room: roomId });
+    res.send(reservation);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
 // get reservation for user
 const getUserReservation = async (req, res) => {
   const { userId } = req.params;
@@ -123,6 +133,7 @@ const cancel = async (req, res) => {
 };
 module.exports = {
   getReservations,
+  getRoomReservations,
   getReservation,
   getUserReservation,
   reserve,

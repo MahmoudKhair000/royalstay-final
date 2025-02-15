@@ -24,7 +24,7 @@
               (click)="goToHotel(hotel._id)"
               routerLink="../rooms"
             >
-              Book &UpperRightArrow;
+              Reserve <i class="bi bi-arrow-up-right"></i>
             </button>
           </div>
         </div>
@@ -34,7 +34,10 @@
   </div>
 </div>
 }@else if(userId == null){
-<div style="min-height: calc(100vh - 80px);display: flex;align-items: center;" class="bg-art-one w-100 row justify-content-center">
+<div
+  style="min-height: calc(100vh - 80px); display: flex; align-items: center"
+  class="bg-art-one w-100 row justify-content-center"
+>
   <button
     style="
       height: 60px;
