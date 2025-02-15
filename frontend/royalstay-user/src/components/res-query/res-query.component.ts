@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ArrayType } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 // import { SchemaType, SchemaTypes } from 'mongoose';
@@ -31,7 +30,6 @@ export class ResQueryComponent {
         } else {
           this.reservations = result;
         }
-        console.log(this.reservations)
       })
   };
 }

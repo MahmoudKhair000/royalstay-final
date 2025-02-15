@@ -16,7 +16,7 @@ export class NavbarComponent {
 
   // userId:any = localStorage.getItem("userId")
   localStorage(item: any) { return localStorage.getItem(item); }
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
   logOut() {
     localStorage.removeItem("userId")
     this.router.navigate(['../'])

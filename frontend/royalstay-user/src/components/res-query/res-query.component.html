@@ -1,75 +1,51 @@
 <div class="bg-art-one py-5">
   <div class="main container">
-    <h2 class="mb-4">Reservation Query !!</h2>
-    <table
-      class="mb-5 table table-bordered text-center radius m-0 overflow-x-scroll"
-    >
-      <thead>
-        <tr>
-          <!-- <td>user</td> -->
-          <td>User Name</td>
-          <!-- <td>User Mail</td> -->
-          <td>User Phone</td>
-          <!-- <td>hotel</td> -->
-          <td>Hotel Name</td>
-          <td>Hotel Mail</td>
-          <td>Hotel Phone</td>
-          <td>Room Type</td>
-          <td>Room Price</td>
-          <td>Reservation Days</td>
-          <td>total</td>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of reservations; track $index) {
-        <tr>
-          <!-- <td>{{ item.user }}</td> -->
-          <td>{{ item.userName }}</td>
-          <!-- <td>{{ item.userMail }}</td> -->
-          <td>{{ item.userPhone }}</td>
-          <!-- <td>{{ item.hotel }}</td> -->
-          <td>{{ item.hotelName }}</td>
-          <td>{{ item.hotelMail }}</td>
-          <td>{{ item.hotelPhone }}</td>
-          <td>{{ item.roomType }}</td>
-          <td>{{ item.roomPrice }}</td>
-          <td>{{ item.days.length }}</td>
-          <td>{{ item.total }}</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-    <!-- //////////////////////////////////////////////////////////////////// -->
-    <!-- //////////////////////////////////////////////////////////////////// -->
+    <h2 class="mb-4">Your Reservations !!</h2>
     <div class="bookings">
-      <div class="book row">
-        <div class="d-flex align-items-center justify-content-center col-3">
-          <p>Hotel: {{ reservations[0].hotelName }}</p>
-        </div>
-        <div class="d-flex align-items-center justify-content-center col-2">
-          <p>
-            Type: &nbsp; {{ reservations[0].roomType }} <br />Class:
-            {{ reservations[0].roomClass }}
-          </p>
-        </div>
-        <div class="d-flex align-items-center justify-content-center col-3">
-          <p>
-            Starts: {{ reservations[0].days[0] }}
-            <br />
-            Ends: &nbsp;
-            {{ reservations[0].days[reservations[0].days.length - 1] }}
-          </p>
-        </div>
-        <div class="d-flex align-items-center justify-content-center col-2">
-          <p>
-            price: {{ reservations[0].roomPrice }}$ <br />For
-            {{ reservations[0].days.length }} days
-          </p>
-        </div>
-        <div class="d-flex align-items-center justify-content-center col-2">
-          <p>Total: {{ reservations[0].total }}$</p>
+      @for (res of reservations; track $index) {
+      <div class="book">
+        <div class="row">
+          <div
+            class="d-flex align-items-center justify-content-center res-detail col-12 col-md-6 col-lg-3"
+          >
+            <p>Hotel: {{ res.hotelName }}</p>
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-center res-detail col-12 col-md-6 col-lg-3"
+          >
+            <div>
+              <p>Starts: {{ res.days[0] }}</p>
+              <hr />
+              <p>Ends: &nbsp; {{ res.days[res.days.length - 1] }}</p>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-center res-detail col-12 col-md-4 col-lg-2"
+          >
+            <div>
+              <p>Type: &nbsp; {{ res.roomType }}</p>
+              <hr />
+              <p>Class: {{ res.roomClass }}</p>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-center res-detail col-12 col-md-4 col-lg-2"
+          >
+            <div>
+              <p>price: {{ res.roomPrice }}$</p>
+              <hr />
+              <p>For {{ res.days.length }} days</p>
+            </div>
+          </div>
+
+          <div
+            class="d-flex align-items-center justify-content-center res-detail col-12 col-md-4 col-lg-2"
+          >
+            <p>Total: {{ res.total }}$</p>
+          </div>
         </div>
       </div>
+      }
     </div>
   </div>
 </div>

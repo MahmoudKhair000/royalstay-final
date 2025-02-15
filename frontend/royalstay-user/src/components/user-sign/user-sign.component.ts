@@ -37,7 +37,11 @@ export class UserSignComponent {
     gender: ''
   };
 
-  credentials = { email: '', password: '' };
+  credentials = {
+    email: '',
+    password: ''
+  };
+
   newUser: any;
   signUser: any;
 
@@ -46,37 +50,37 @@ export class UserSignComponent {
   toggleMode() { this.isRegisterMode = !this.isRegisterMode; }
 
   registerUser() {
-    console.log(this.userData);
-    this.http.post("http://localhost:4000/user/register", this.userData).subscribe(
-      (result: any) => {
-        try {
-          console.log(result);
-          this.newUser = result;
-          localStorage.setItem("userId", this.newUser._id)
-        } catch (err: any) {
-          alert(err)
-        }
-      })
+    this.http
+      .post("http://localhost:4000/user/register", this.userData)
+      .subscribe(
+        (result: any) => {
+          try {
+            this.newUser = result;
+            localStorage.setItem("userId", this.newUser._id)
+            this.router.navigate(['../'])
+          } catch (err: any) {
+            alert(err)
+          }
+        })
   }
+
   loginUser() {
-    console.log(this.credentials);
-    this.http.post("http://localhost:4000/user/login", this.credentials).subscribe(
-      (result: any) => {
+    this.http
+      .post("http://localhost:4000/user/login", this.credentials)
+      .subscribe((result: any) => {
         try {
-          console.log(result);
           this.signUser = result.user;
-          console.log(this.signUser._id);
           localStorage.setItem("userId", this.signUser._id)
           this.router.navigate(['../'])
         } catch (err: any) {
           alert(err)
         }
       })
-    }
-    
-    logOut() {
-      localStorage.removeItem("userId");
-      window.location.reload();
+  }
+
+  logOut() {
+    localStorage.removeItem("userId");
+    window.location.reload();
   }
   // constructor(private apiService: ApiService, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) { }
 

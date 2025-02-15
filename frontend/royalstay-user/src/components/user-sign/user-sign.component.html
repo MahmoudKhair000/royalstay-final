@@ -37,7 +37,6 @@
           <button type="submit" class="btn">Login</button>
         </form>
       </div>
-
       <!-- ************* REGISTER ************* -->
       <div class="form-box register">
         <form (ngSubmit)="registerUser()" *ngIf="isRegisterMode">
@@ -140,8 +139,8 @@
       </div>
     </div>
     }@else {
-    <div class="w-100 row justify-content-center">
-      <button type="button" (click)="logOut()" class="btn w-50 m-auto">
+    <div class="w-100 my-5 row justify-content-center">
+      <button type="button" (click)="logOut()" class="logObtn p-4 w-50 my-5 m-auto">
         Log Out
       </button>
     </div>

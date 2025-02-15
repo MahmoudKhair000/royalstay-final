@@ -1,4 +1,8 @@
 /* Start Hotels */
+
+* {
+  color: var(--navy);
+}
 .hotel-box {
   background-color: var(--bg-one);
   border: var(--border-one);
@@ -37,4 +41,13 @@
   border-radius: 30px;
   align-self: flex-end;
   background-color: #003366;
+  transition: var(--transition-one);
+}
+
+.hotel-box .hotel-btn:hover {
+  background-color: var(--gold);
+}
+
+.hotel-box .hotel-btn i {
+  color: var(--txt-two);
 }

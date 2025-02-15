@@ -119,17 +119,27 @@
                     class="nav-link active"
                     aria-current="page"
                     [routerLink]="['about']"
-                    >About Us 
+                    >About Us
                   </a>
                 </li>
                 <hr />
                 <li class="nav-item ms-4 mx-2">
+                  @if (!localStorage("userId")) {
                   <a
                     class="nav-link active"
                     aria-current="page"
                     [routerLink]="['user-sign']"
                     >Log In</a
                   >
+                  }@else if (localStorage("userId")) {
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    (click)="logOut()"
+                  >
+                    Log Out
+                  </a>
+                  }
                 </li>
               </ul>
             </div>
