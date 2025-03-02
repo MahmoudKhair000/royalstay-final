@@ -35,4 +35,8 @@ app.use("/hotel", hotelRoutes);
 app.use("/room", roomRoutes);
 app.use("/reservation", reservationRoutes);
 
+app.get('/api/hello', (req, res) => {
+  res.json({ message: "Hello from the backend!" });
+});
+
 app.listen(4000, () => console.log("connected to port 4000"));
