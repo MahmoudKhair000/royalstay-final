@@ -24,7 +24,6 @@ export class ResQueryComponent {
     this.http
       .get(`http://localhost:4000/reservation/user/${this.userId}`/*, { request-body-object } */)
       .subscribe((result) => {
-        console.log(typeof (result))
         if ((typeof (result)).toString() != `object`) {
           this.reservations = [result];
         } else {

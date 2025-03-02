@@ -3,6 +3,13 @@
 * {
   color: var(--navy);
 }
+input {
+  border: 0.5px solid var(--navy);
+  border-radius: 4px;
+}
+input > * {
+  color: var(--navy);
+}
 .hotel-box {
   background-color: var(--bg-one);
   border: var(--border-one);
