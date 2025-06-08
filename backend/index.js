@@ -13,11 +13,9 @@ app.use(
   })
 );
 dotenv.config();
-// .connect("mongodb://localhost:27017/hotelapp")
+// "mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp"
 mongoose
-  .connect(
-    "mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp"
-  )
+  .connect("mongodb://localhost:27017/hotelapp")
   .then(() => {
     console.log("connected to db successefully");
   })
@@ -35,8 +33,11 @@ app.use("/hotel", hotelRoutes);
 app.use("/room", roomRoutes);
 app.use("/reservation", reservationRoutes);
 
-app.get('/api/hello', (req, res) => {
+app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
 
 app.listen(4000, () => console.log("connected to port 4000"));
+
+// export the app for vercel serverless functions
+module.exports = app;

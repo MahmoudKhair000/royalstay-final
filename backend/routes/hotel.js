@@ -13,10 +13,14 @@ const {
 
 //http://localhost:4000/hotel
 router.get("/", getHotels);
+
 router.post("/id", getHotelById);
+
 router.post("/register", createHotel);
 router.post("/login", loginHotel);
+
 router.put("/update/:hotelId", updateHotel);
+
 router.delete("/delete/:hotelId", deleteHotel);
 
 router.patch("/test", async (req, res) => {

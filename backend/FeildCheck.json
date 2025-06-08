@@ -1,0 +1,89 @@
+[
+  {
+    "Day": "Mar 23 2025",
+    "hour": "05:00",
+
+    "AirHumidity": "40%",
+    "AirTemperature": "26C",
+
+    "checkLines": [
+      {
+        "line": 1,
+
+        "Moisture1": "19",
+        "Moisture2": "18",
+        "Moisture3": "17",
+
+        "Check": [
+          {
+            "Tree N.o": 1,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 2,
+            "location": ["21.554", "25.152", "5.001"],
+
+            "the function flow": "MEMS file --> Http request (HTTP Client) --> (AI Model API)--> State",
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 3,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 4,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 5,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 6,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          }
+        ]
+      },
+      {
+        "line": 2,
+        "Check": [
+          {
+            "Tree N.o": 1,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 2,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 3,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 4,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 5,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          },
+          {
+            "Tree N.o": 6,
+            "location": ["21.554", "25.152", "5.001"],
+            "state": "infected"
+          }
+        ]
+      }
+    ]
+  }
+]

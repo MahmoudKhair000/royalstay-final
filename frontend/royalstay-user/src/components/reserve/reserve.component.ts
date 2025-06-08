@@ -48,6 +48,7 @@ export class ReserveComponent {
   }
 
   constructor(public http: HttpClient, public router: Router) {
+
     this.http
       .post(`http://localhost:4000/user/id`, { userId: localStorage.getItem("userId") })
       .subscribe((user: any) => {
@@ -58,6 +59,7 @@ export class ReserveComponent {
         this.resevreData.userPhone = user.phone
         this.resevreData.userAge = user.age
       });
+
     this.http
       .post(`http://localhost:4000/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
       .subscribe((hotel: any) => {
@@ -67,6 +69,7 @@ export class ReserveComponent {
         this.resevreData.hotelMail = hotel.email;
         this.resevreData.hotelPhone = hotel.phone;
       });
+
     this.http
       .post(`http://localhost:4000/room/id`, { hotelId: localStorage.getItem("hotelId"), roomId: localStorage.getItem("roomId") })
       .subscribe((room: any) => {
