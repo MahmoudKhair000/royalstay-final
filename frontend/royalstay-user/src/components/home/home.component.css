@@ -141,7 +141,9 @@
 
 .testimonials,
 .news {
-  width: 49% !important;
+  /* width: 49% !important; */
+  min-height: 335px;
+  max-height: max-content;
 }
 
 @media (max-width: 992px) {

@@ -14,8 +14,9 @@ app.use(
 );
 dotenv.config();
 // "mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp"
+// "mongodb://localhost:27017/hotelapp"
 mongoose
-  .connect("mongodb://localhost:27017/hotelapp")
+  .connect("mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp")
   .then(() => {
     console.log("connected to db successefully");
   })
