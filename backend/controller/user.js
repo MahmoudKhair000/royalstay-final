@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 let userModel = require("../model/user");
 
 const getAllUsers = async (req, res) => {
@@ -43,12 +43,12 @@ const login = async (req, res) => {
     } else {
       let isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
-        let token = jwt.sign(
-          { id: user._id, email: user.email },
-          // process.env.secret,
-          { expiresIn: "1Hrs" }
-        );
-        res.status(200).send({ user: user, token: token });
+        // let token = jwt.sign(
+        //   { id: user._id, email: user.email },
+        //   process.env.secret,
+        //   { expiresIn: "1Hrs" }
+        // );
+        res.status(200).send({ user: user });
       } else {
         res.status(401).send({ message: "invalid Email or Password" });
       }
