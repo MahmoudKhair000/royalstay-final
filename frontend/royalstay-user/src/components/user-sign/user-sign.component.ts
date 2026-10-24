@@ -51,7 +51,7 @@ export class UserSignComponent {
 
   registerUser() {
     this.http
-      .post("http://localhost:4000/user/register", this.userData)
+      .post("https://royalstay-backend-final.vercel.app/user/register", this.userData)
       .subscribe(
         (result: any) => {
           try {
@@ -66,7 +66,7 @@ export class UserSignComponent {
 
   loginUser() {
     this.http
-      .post("http://localhost:4000/user/login", this.credentials)
+      .post("https://royalstay-backend-final.vercel.app/user/login", this.credentials)
       .subscribe((result: any) => {
         try {
           this.signUser = result.user;

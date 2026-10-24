@@ -50,7 +50,7 @@ export class ReserveComponent {
   constructor(public http: HttpClient, public router: Router) {
 
     this.http
-      .post(`http://localhost:4000/user/id`, { userId: localStorage.getItem("userId") })
+      .post(`https://royalstay-backend-final.vercel.app/user/id`, { userId: localStorage.getItem("userId") })
       .subscribe((user: any) => {
         console.log(user)
         this.resevreData.user = user._id
@@ -61,7 +61,7 @@ export class ReserveComponent {
       });
 
     this.http
-      .post(`http://localhost:4000/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
+      .post(`https://royalstay-backend-final.vercel.app/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
       .subscribe((hotel: any) => {
         console.log(hotel);
         this.resevreData.hotel = hotel._id;
@@ -71,7 +71,7 @@ export class ReserveComponent {
       });
 
     this.http
-      .post(`http://localhost:4000/room/id`, { hotelId: localStorage.getItem("hotelId"), roomId: localStorage.getItem("roomId") })
+      .post(`https://royalstay-backend-final.vercel.app/room/id`, { hotelId: localStorage.getItem("hotelId"), roomId: localStorage.getItem("roomId") })
       .subscribe((room: any) => {
         console.log(room);
         this.resevreData.room = `${room._id}`;
@@ -104,7 +104,7 @@ export class ReserveComponent {
       window.alert("Choose end and start date")
     } else (
       this.http
-        .post(`http://localhost:4000/reservation/add`, {
+        .post(`https://royalstay-backend-final.vercel.app/reservation/add`, {
           userId: localStorage.getItem("hotelId"),
           hotelId: localStorage.getItem("hotelId"),
           roomId: localStorage.getItem("hotelId"),

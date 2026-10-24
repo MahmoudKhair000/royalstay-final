@@ -15,7 +15,7 @@ export class HotelsComponent {
   hotels: any = {}
   getHotels() {
     this.http
-      .get(`http://localhost:4000/hotel/`/*, { request-body-object } */)
+      .get(`https://royalstay-backend-final.vercel.app/hotel/`/*, { request-body-object } */)
       .subscribe((result: any) => {
         try {
           console.log(typeof (result))

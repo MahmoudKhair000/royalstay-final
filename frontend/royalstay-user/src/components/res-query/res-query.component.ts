@@ -22,7 +22,7 @@ export class ResQueryComponent {
 
   constructor(public http: HttpClient) {
     this.http
-      .get(`http://localhost:4000/reservation/user/${this.userId}`/*, { request-body-object } */)
+      .get(`https://royalstay-backend-final.vercel.app/reservation/user/${this.userId}`/*, { request-body-object } */)
       .subscribe((result) => {
         if ((typeof (result)).toString() != `object`) {
           this.reservations = [result];

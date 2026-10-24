@@ -5,7 +5,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule, RouterLink],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
@@ -40,7 +40,7 @@ export class RoomsComponent {
     for (let i = 0; i < rooms.length; i++) {
       let roomId = rooms[i]._id;
       this.http
-        .get(`http://localhost:4000/reservation/room/${roomId}`)
+        .get(`https://royalstay-backend-final.vercel.app/reservation/room/${roomId}`)
         .subscribe((reserved: any) => {
           reserved.filter((x: any) => {
             if (x.days.includes(`${this.selected}`)) {
@@ -56,7 +56,7 @@ export class RoomsComponent {
   }
   getRooms() {
     this.http
-      .post(`http://localhost:4000/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
+      .post(`https://royalstay-backend-final.vercel.app/hotel/id`, { hotelId: localStorage.getItem("hotelId") })
       .subscribe((result: any) => {
         try {
           this.rooms = result.rooms;

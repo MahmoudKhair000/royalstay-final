@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-room-view',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './room-view.component.html',
   styleUrl: './room-view.component.css'
 })
@@ -13,7 +13,7 @@ export class RoomViewComponent {
   ngOnInit() {
     window.scrollTo(0, 0);
   }
-  
+
   rooms: any = [];
   room: any = {};
   roomImages: any = [];
@@ -21,7 +21,7 @@ export class RoomViewComponent {
 
   getRoom(hotelId: any, roomId: any) {
     this.http
-      .post(`http://localhost:4000/room/id`, { hotelId: hotelId, roomId: roomId })
+      .post(`https://royalstay-backend-final.vercel.app/room/id`, { hotelId: hotelId, roomId: roomId })
       .subscribe((result: any) => {
         this.room = result;
         this.roomImages = this.room.imagesurl;

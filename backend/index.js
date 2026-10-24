@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 
+
 app.use(express.json());
 app.use(
   cors({
@@ -13,10 +14,11 @@ app.use(
   })
 );
 dotenv.config();
+const MONGODB_URI = process.env.MONGODB_URI;
 // "mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp"
 // "mongodb://localhost:27017/hotelapp"
 mongoose
-  .connect("mongodb+srv://Group1:Pass4Group1@cluster0.3u0tj.mongodb.net/hotelapp")
+  .connect(`${MONGODB_URI}/royal-stay`)
   .then(() => {
     console.log("connected to db successefully");
   })
