@@ -1,11 +1,11 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const bcryptjs = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const mongoose = require("mongoose");
+const express = require('express');
+const dotenv = require('dotenv');
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 // this is the "hotel & room" Model
-const hotelModel = require("../model/hotel");
+const hotelModel = require('../model/hotel');
 
 // hotel rooms functions
 const getHotels = async (req, res) => {
@@ -30,7 +30,7 @@ const createHotel = async (req, res) => {
   let newhotel = req.body;
   let savehotel = await hotelModel.create(newhotel);
   try {
-    res.json({ message: "done new hotel", date: savehotel });
+    res.json({ message: 'done new hotel', date: savehotel });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -40,27 +40,27 @@ const loginHotel = async (req, res) => {
   if (!email || !password) {
     return res
       .status(400)
-      .json({ maeesage: "you must enter email and password" });
+      .json({ maeesage: 'you must enter email and password' });
   }
 
-  const hotel = await hotelModel.findOne({ email: email });
+  const hotel = await hotelModel.findOne({ email: email }).select('+password');
   if (!hotel) {
-    res.status(404).json({ meassage: "invalid email" });
+    res.status(404).json({ meassage: 'invalid email' });
   } else {
     try {
       const isvalid = await bcryptjs.compare(password, hotel.password);
       if (isvalid) {
         var token = jwt.sign(
           { id: hotel._id, email: hotel.email },
-          process.env.SECRET
+          process.env.SECRET,
         );
-        localStorage.setItem("token", token);
-        console.log("password match: " + isvalid);
+        localStorage.setItem('token', token);
+        console.log('password match: ' + isvalid);
         console.log(token);
-        res.status(200).json({ message: "Successful login", token: token });
+        res.status(200).json({ message: 'Successful login', token: token });
       } else {
-        console.log("password match: " + isvalid);
-        res.status(401).json({ message: "invalid password" });
+        console.log('password match: ' + isvalid);
+        res.status(401).json({ message: 'invalid password' });
       }
     } catch (err) {
       res.json({ message: err.message });
@@ -72,7 +72,7 @@ const deleteHotel = async (req, res) => {
   const { hotelId } = req.params;
   try {
     await hotelModel.findOneAndDelete({ _id: hotelId });
-    res.send("Hotel Deleted Successfully!!");
+    res.send('Hotel Deleted Successfully!!');
   } catch (err) {
     res.status(404).send(err.message);
   }
@@ -86,7 +86,7 @@ const updateHotel = async (req, res) => {
       new: true, // Return the room after it's updated
       runValidators: true, // Validate the data during the update
     });
-    res.send("Hotel Updated Successfully!!");
+    res.send('Hotel Updated Successfully!!');
   } catch (err) {
     res.status(404).send(err.message);
   }
@@ -138,7 +138,7 @@ const deleteHotelRoom = async (req, res) => {
 
   const { roomType } = await req.params;
   const updated = hotelRooms.filter(
-    (x) => x.roomType != roomType && x.roomType != null
+    (x) => x.roomType != roomType && x.roomType != null,
   );
   const update = { rooms: updated };
   try {
@@ -148,7 +148,7 @@ const deleteHotelRoom = async (req, res) => {
     });
     const hotelAfter = await hotelModel.findOne({ _id: hotelId });
     res.send({
-      message: "deleted successfully !!!",
+      message: 'deleted successfully !!!',
       // params: req.params,
       // hotelAfter: hotelAfter,
       roomsAfter: hotelAfter.rooms,
@@ -174,7 +174,7 @@ const deleteHotelRoomById = async (req, res) => {
     const roomsAfter = await hotelAfter.rooms;
     res.send({
       params: req.params,
-      message: "deleted successfully !!!",
+      message: 'deleted successfully !!!',
       // roomsFiltered: updated,
       roomsAfter: roomsAfter,
       // hotelAfter: hotelAfter,
@@ -199,7 +199,7 @@ const updateHotelRoom = async (req, res) => {
     await hotelModel.findByIdAndUpdate(
       hotelId,
       { rooms: hotelRooms },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     res.json({
       room: hotelRooms.find((x) => x._id == roomId),

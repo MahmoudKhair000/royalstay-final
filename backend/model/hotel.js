@@ -34,7 +34,7 @@ const hotelSchema = mongoose.Schema({
     required: true,
     validate: [validator.isEmail, "invalid email"],
   },
-  password: { type: String, required: true },
+  password: { type: String, required: true, select: false },
   phone: { type: String, required: true },
   city: { type: String, required: true },
   rating: { type: Number, default: "Not assigned" },
